@@ -3,14 +3,14 @@
     "file_column_width": 60
   },
   "skip_files": [
-    "lib/action_for_children/application.ex",
-    "lib/action_for_children/repo.ex",
-    "lib/action_for_children/web/endpoint.ex",
-    "lib/action_for_children/web/gettext.ex",
-    "lib/action_for_children/web/web.ex",
+    "lib/your_sanctuary/application.ex",
+    "lib/your_sanctuary/repo.ex",
+    "lib/your_sanctuary/web/endpoint.ex",
+    "lib/your_sanctuary/web/gettext.ex",
+    "lib/your_sanctuary/web/web.ex",
 
-    "lib/action_for_children/web/views/error_helpers.ex",
-    "lib/action_for_children/web/views/layout_view.ex",
+    "lib/your_sanctuary/web/views/error_helpers.ex",
+    "lib/your_sanctuary/web/views/layout_view.ex",
     "test"
   ],
   "custom_stop_words": [

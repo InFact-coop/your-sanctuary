@@ -6,14 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :action_for_children,
+config :your_sanctuary,
   ecto_repos: [YourSanctuary.Repo]
 
 config :sendgrid,
   api_key: System.get_env("SENDGRID_API_KEY")
 
 # Configures the endpoint
-config :action_for_children, YourSanctuaryWeb.Endpoint,
+config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: YourSanctuaryWeb.ErrorView, accepts: ~w(html json)],
   secret_key_base: System.get_env("SECRET_KEY_BASE"),

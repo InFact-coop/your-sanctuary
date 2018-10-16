@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :action_for_children, YourSanctuaryWeb.Endpoint,
+config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -31,13 +31,13 @@ config :action_for_children, YourSanctuaryWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :action_for_children, YourSanctuaryWeb.Endpoint,
+config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/action_for_children/web/views/.*(ex)$},
-      ~r{lib/action_for_children/web/templates/.*(eex)$}
+      ~r{lib/your_sanctuary/web/views/.*(ex)$},
+      ~r{lib/your_sanctuary/web/templates/.*(eex)$}
     ]
   ]
 
@@ -49,10 +49,10 @@ config :logger, :console, format: "[$level] $message\n"
 config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
-config :action_for_children, YourSanctuary.Repo,
+config :your_sanctuary, YourSanctuary.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "j0bb3hplop",
-  database: "action_for_children_dev",
+  database: "your_sanctuary_dev",
   hostname: "localhost",
   pool_size: 10

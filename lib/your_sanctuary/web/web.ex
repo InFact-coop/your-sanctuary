@@ -27,7 +27,7 @@ defmodule YourSanctuaryWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/action_for_children/web/templates",
+      use Phoenix.View, root: "lib/your_sanctuary/web/templates",
                         namespace: YourSanctuaryWeb
 
       # Import convenience functions from controllers

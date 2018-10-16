@@ -2,7 +2,7 @@ use Mix.Config
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :action_for_children, YourSanctuaryWeb.Endpoint,
+config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   http: [port: 4001],
   server: false
 
@@ -10,10 +10,10 @@ config :action_for_children, YourSanctuaryWeb.Endpoint,
 config :logger, level: :warn
 
 # Configure your database
-config :action_for_children, YourSanctuary.Repo,
+config :your_sanctuary, YourSanctuary.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "j0bb3hplop",
-  database: "action_for_children_test",
+  database: "your_sanctuary_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

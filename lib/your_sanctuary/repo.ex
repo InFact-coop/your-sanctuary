@@ -1,5 +1,5 @@
 defmodule YourSanctuary.Repo do
-  use Ecto.Repo, otp_app: :action_for_children
+  use Ecto.Repo, otp_app: :your_sanctuary
 
   @doc """
   Dynamically loads the repository url from the
