@@ -1,0 +1,79 @@
+<div class="w-100 bg-blue">
+  <div class="flex center mw8">
+    <div class="w-60 pa4">
+      <h1 class="white">When's good to talk?</h1>
+      <p class="white fw4 tracked lh-copy">The service is available Monday-Friday 2-8pm.</p>
+      <p class="white fw4 tracked lh-copy">If you'd rather talk to us on the phone let us know when is best for you and we will arrange a time to call you and answer your questions.</p>
+    </div>
+  </div>
+</div>
+
+<div class="mw8 center">
+
+  <div class="mw8 center ph2">
+    <p class="blue tr" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="red tr" role="alert"><%= get_flash(@conn, :error) %></p>
+  </div>
+
+  <%= form_for @changeset, user_callback_path(@conn, :create, @conn.assigns[:user]), fn f -> %>
+    <div class="pa3 flex justify-center">
+      <div class="pa3 w-50-ns">
+
+        <div>
+          <%= error_tag f, :time %>
+          <div class="flex justify-between">
+            <%= for time <- times() do
+              render YourSanctuaryWeb.CallbackView, "time_option.html", time: time
+            end %>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between mv2">
+            <%= for day <- elem(days(), 0)  do
+              render YourSanctuaryWeb.CallbackView, "day_option.html", day: day
+            end %>
+          </div>
+          <div class="flex justify-between mv2">
+            <%= for day <- elem(days(), 1)  do
+              render YourSanctuaryWeb.CallbackView, "day_option.html", day: day
+            end %>
+          </div>
+          <%= error_tag f, :day %>
+        </div>
+
+        <div>
+          <%= textarea f, :topic, class: "w-100 br3 ba b--light-gray h4 pa3-5 f5 mt3 outline-0", placeholder: "Please let us know a bit about what you'd like to ask", rows: 5 %>
+        </div>
+
+        <div>
+          <%= telephone_input f, :phone, class: "w-100 br3 ba b--light-gray h2 f5 mt3 pa3-5 no-outline outline-0", placeholder: "Your phone number" %>
+        </div>
+        <%= error_tag f, :phone %>
+
+        <div class="dn">
+          <%= for time <- times() do
+            radio_button f, :time, time, "#{time}_radio": ""
+          end %>
+          <%= for day <- Enum.concat(elem(days(), 0), elem(days(), 1)) do
+            radio_button f, :day, day, "#{day}_radio": ""
+          end %>
+        </div>
+
+        <div class="mv3">
+          <%= submit "Request call", class: red_button() %>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  window.intercomSettings = {
+    autoShow: false,
+    user_id: "<%= @user.uuid %>",
+    app_id: "<%= System.get_env("INTERCOM_APP_ID") %>",
+    user_hash: "<%= :crypto.hmac(:sha256, "#{System.get_env("INTERCOM_HASH_KEY")}", @user.uuid) |> Base.encode16 %>"
+  }
+</script>

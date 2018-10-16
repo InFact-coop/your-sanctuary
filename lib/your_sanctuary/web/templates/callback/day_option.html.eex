@@ -1,0 +1,3 @@
+<div class="pa2 bg-light-gray w-20 gray tc pointer t3 all ease" <%= @day %>>
+  <%= String.capitalize abbreviate_day(@day) %>
+</div>

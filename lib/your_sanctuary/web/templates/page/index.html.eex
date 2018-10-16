@@ -1,0 +1,59 @@
+<div class="w-100 bg-blue">
+  <div class="flex center mw8">
+    <div class="w-60-ns w-100 ph4-ns pv3-ns ph3 pv4 tc tl-ns">
+      <h1 class="white fw5 f1-ns f3">Free and confidential live chat with parenting staff</h1>
+      <h4 class="white fw4 tracked lh-copy w-70-ns">Chat online with Jo or Gina weekdays between 2-8pm or request a call back when it's convenient for you.</h4>
+      <a href="/talk-to-us" class="db white bg-dark-red f3-ns f5 fw4 pv2-ns pv3 ph3 mv4-ns mt4 br2 hover-bg-red t3 all ease no-underline tc w-40-ns">Speak to us</a>
+    </div>
+
+    <div class="w-50-m relative">
+      <div class="center mw5 absolute bottom-0 left-0 right-0" style="max-width: 19rem; bottom: -1.25em">
+        <img src="/images/kid.png" class="absolute bottom-0 pt3">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pv4-ns pv3 mw8 center">
+
+  <div class="mw8 ph3 ph4-ns w-100">
+    <p class="tc tl-ns black" style="line-height: 1.6; font-size: 1.1em;">We can talk to you about...</p>
+    <div class="flex justify-between-ns flex-wrap w-100 mt4">
+      <%=  render "icon.html", icon: "development", content: "Development", class: "bg-blue" %>
+      <%=  render "icon.html", icon: "behaviour", content: "Behaviour", class: "bg-light-blue" %>
+      <%=  render "icon.html", icon: "eating", content: "Eating", class: "bg-blue" %>
+      <%=  render "icon.html", icon: "sleep", content: "Sleeping", class: "bg-light-blue" %>
+      <%=  render "icon.html", icon: "toilet", content: "Toilet training", class: "bg-blue" %>
+      <%=  render "icon.html", icon: "work", content: "Work", class: "bg-light-blue" %>
+      <%=  render "icon.html", icon: "finances", content: "Finances", class: "bg-blue" %>
+      <%=  render "icon.html", icon: "feelings", content: "How you feel", class: "bg-light-blue" %>
+    </div>
+  </div>
+
+  <div class="center w-100 mw8 ph3 ph4-ns mv4-ns mv3">
+    <p class="mb4 tc ph6-ns black" style="line-height: 1.6; font-size: 1.1em;">
+      And anything else you want to talk about! You don’t need to have a question, just come and get something off your chest. Speak to us as regularly as you like and continue where you left off.
+    </p>
+  </div>
+
+</div>
+
+<div class="w-100 bg-blue">
+  <div class="mt0 mw8 center ph3 pv4 pt1-ns ph0-ns pb0-ns">
+    <p class="red b tc tl-ns mt0 mt3-ns" role="alert"><%= get_flash(@conn, :error) %></p>
+    <div class="flex flex-row-ns flex-column items-center items-start-ns justify-center-ns">
+      <%= render "talk_to_us_tiles.html", assigns %>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex mw8 pv2 center">
+  <div class="w-100 ph3 pv5-ns pv4 ph4-ns">
+    <h2 class="tc near-black f3 ma0">Our staff</h2>
+    <p class="tc mid-gray lh-copy mb4">We have years of experience working with families and are here to support you</p>
+    <%= link to: page_path(@conn, :practitioners), class: "tc db w-50-ns center" do %>
+      <button class="<%= red_button() %>">Meet our staff</button>
+    <% end %>
+  </div>
+</div>

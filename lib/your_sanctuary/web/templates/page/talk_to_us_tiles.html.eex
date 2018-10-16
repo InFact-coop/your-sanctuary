@@ -1,0 +1,25 @@
+<%
+input_class = "ba b--blue br3 tc pv3 ph3 f5 outline-0 dark-red mb2 w-80-ns w-100"
+home_tile_class = "w-60-ns tc flex flex-column items-center mv4-ns pb3-ns"
+%>
+
+<div class="<%= "#{home_tile_class} pb4 ml0-ns mr4-ns" %>">
+  <h2 class="f3 ma0 white">Speak to us</h2>
+  <p class="white w-80-ns lh-copy mb4">Speak to us online or by phone. To start talking straight away, put your email address in and you’ll be directed to our confidential chat page.</p>
+
+  <%= form_for @conn, user_path(@conn, :create), [as: :user], fn f -> %>
+    <%= email_input f, :email, placeholder: "Your email", class: input_class, required: true %>
+    <%= submit "Talk to a practitioner", class: red_button() %>
+  <% end %>
+</div>
+
+<div class="<%= "#{home_tile_class} pb3 ml4-ns mr0-ns" %>">
+  <h2 class="f3 ma0 white">Continue a conversation</h2>
+  <p class="white w-80-ns lh-copy mb4">Spoken to us before? Login to carry on your conversation. Forgotten your code? <%= link "Request a new code", to: user_path(@conn, :new_code), class: "white" %></p>
+
+  <%= form_for @conn, session_path(@conn, :create), [as: :session], fn f -> %>
+    <%= email_input f, :email, placeholder: "Your email", class: input_class, required: true %>
+    <%= text_input f, :uuid, placeholder: "Code", class: input_class, required: true %>
+    <%= submit "Login", class: red_button() %>
+  <% end %>
+</div>

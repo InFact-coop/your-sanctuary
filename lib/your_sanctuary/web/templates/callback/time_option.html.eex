@@ -1,0 +1,12 @@
+<div class="tc ph2">
+  <div class="br2 center pa3 pointer bg-white t3 all ease flex justify-center items-center" style="width: 100px; height: 100px;" <%= @time %>>
+    <img src='<%= "/images/#{@time}.png" %>' class="w-100">
+  </div>
+  <h2 class="ttc f5 f3-ns">
+    <%= if @time == "afternoon" do %>
+       2pm – 5pm
+    <% else %>
+       5pm – 8pm
+    <% end %>
+  </h2>
+</div>

@@ -1,0 +1,43 @@
+<div class="w-100 bg-blue">
+  <div class="flex center mw8 items-center items-start-ns">
+    <div class="w-50-ns ph3 pv4 ph4-ns pv5-ns tc tl-ns">
+
+      <h1 class="white fw5 f2-ns f3 ma0">Talk to us</h1>
+      <p class="white fw4 tracked lh-copy">Ask your question in the chat box and Jo or Gina will reply as soon as they are free.</p>
+      <p class="white fw4 tracked lh-copy">Leave your email address if you don't get a response straight away and we'll let you know when we're free.</p>
+      <p class="white fw4 tracked lh-copy">To speak to us again and carry on your conversation, make a not of the code below:</p>
+      <p class="white fw4 tracked lh-copy">Your Code: <b><%= @user.uuid %></b></p>
+      <p class="white fw4 tracked lh-copy">If you want to speak to us on the phone, arrange a time that is convenient for you.</p>
+
+      <%= link to: user_callback_path(@conn, :show, @user)  do %>
+        <button class="<%= red_button() %>">Arrange a call</button>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<div class="w-100 center flex justify-center">
+  <div class="mw8">
+    <div class="w-50-ns ph3 pv4 ph4-ns pv5-ns tc tl-ns">
+      <%= link to: page_path(@conn, :practitioners) do %>
+        <button class="<%= "#{red_button()} mb2" %>">Meet our staff</button>
+      <% end %>
+      <p class="lh-copy near-black">We are non-judgemental, inclusive, friendly and approachable.</p>
+      <p class="lh-copy near-black">You can ask us any parenting or family question and we will do our best to make you feel comfortable, understood and helped.</p>
+      <p class="lh-copy near-black">It can be about development, behaviour, feeding, family life, wellbeing, understanding your child, sleeping etc. We really don't mind what you ask us about, we are here to help you.</p>
+      <p class="lh-copy near-black">So that we can best support you, please provide some context about your question. </p>
+      <p class="lh-copy near-black">For example, if you need advice around your child's sleeping, let us know their age and bedtime routine. This means we can give you advice really specific to you and your situation.</p>
+      <p class="lh-copy near-black">You might also find it useful to <a class="red" href="http://dots.actionforchildren.org.uk/">read some general parenting information</a> written by Action for Children practitioners.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.intercomSettings = {
+    autoShow: true,
+    user_id: "<%= @user.uuid %>",
+    app_id: "<%= System.get_env("INTERCOM_APP_ID") %>",
+    user_hash: "<%= :crypto.hmac(:sha256, "#{System.get_env("INTERCOM_HASH_KEY")}", @user.uuid) |> Base.encode16 %>"
+  }
+</script>

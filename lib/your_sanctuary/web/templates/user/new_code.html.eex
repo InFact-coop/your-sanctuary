@@ -1,0 +1,22 @@
+<div class="w-100 bg-blue">
+  <div class="flex center mw8 justify-center justify-start-ns">
+    <div class="pv4 ph3 ph4-ns tc tl-ns">
+      <h1 class="white fw5 f2-ns f3">Forgotten your login code?</h1>
+    </div>
+  </div>
+</div>
+
+<div class="flex center mw8">
+
+  <div class="w-50-ns pv4 ph3 ph4-ns tc tl-ns">
+    <%= if get_flash(@conn, :error) do %>
+      <p class="red" style="margin-bottom: 2em" role="alert"><%= get_flash(@conn, :error) %></p>
+    <% end %>
+
+    <%= form_for @conn, user_path(@conn, :generate_new_code), [as: :user], fn f -> %>
+      <%= email_input f, :email, placeholder: "Your email", class: "ba b--blue br3 tc pv3 ph3 f5 outline-0 dark-red mb2 w-80-ns w-100", required: true %>
+      <%= submit "Email me my code", class: red_button() %>
+    <% end %>
+
+  </div>
+</div>
