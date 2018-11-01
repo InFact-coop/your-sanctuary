@@ -1,5 +1,12 @@
 import { Component } from "react";
 import "./styles/index.css";
+import styled from "styled-components";
+
+const Title = styled.div.attrs({
+  className: "black f1 tc ttu"
+})`
+  border: 2px solid green;
+`;
 
 export default class App extends Component {
   state = {
@@ -8,9 +15,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App white">
+      <Title>
         <h1>Welcome to {this.state.name}</h1>
-      </div>
+      </Title>
     );
   }
 }
