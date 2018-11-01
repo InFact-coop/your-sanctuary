@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :your_sanctuary, YourSanctuary.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "j0bb3hplop",
+  password: "postgres",
   database: "your_sanctuary_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

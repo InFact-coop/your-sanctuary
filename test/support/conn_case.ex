@@ -20,7 +20,6 @@ defmodule YourSanctuaryWeb.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       import YourSanctuaryWeb.Router.Helpers
-      import YourSanctuaryWeb.TestHelpers
 
       # The default endpoint for testing
       @endpoint YourSanctuaryWeb.Endpoint

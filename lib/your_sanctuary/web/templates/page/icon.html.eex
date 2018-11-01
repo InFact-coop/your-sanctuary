@@ -1,4 +1,0 @@
-<a class="w-10-ns w-50 ph2 ph0-ns no-underline pointer black" href="/talk-to-us">
-  <div class="icon-<%= @icon %> background-img br4 <%= @class %>"></div>
-  <p class="tc mv2"><%= @content %></p>
-</a>

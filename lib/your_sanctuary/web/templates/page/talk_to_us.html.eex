@@ -1,8 +1,0 @@
-<div class="w-100 bg-blue bb b--white">
-  <div class="mt0 mw8 center ph3 pv4 pt1-ns ph0-ns pb0-ns">
-    <p class="red b tc tl-ns mt0 mt3-ns" role="alert"><%= get_flash(@conn, :error) %></p>
-    <div class="flex flex-row-ns flex-column items-center items-start-ns justify-center-ns">
-      <%= render "talk_to_us_tiles.html", assigns %>
-    </div>
-  </div>
-</div>
