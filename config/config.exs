@@ -9,21 +9,18 @@ use Mix.Config
 config :your_sanctuary,
   ecto_repos: [YourSanctuary.Repo]
 
-config :sendgrid,
-  api_key: System.get_env("SENDGRID_API_KEY")
-
 # Configures the endpoint
 config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   url: [host: "localhost"],
+  secret_key_base: "1202GDTuWOj+dNF2J6Ix/Tfi/AQQ86w+OIgKiGwz3BgZaMuVQQgLt6YZe2vQAykv",
   render_errors: [view: YourSanctuaryWeb.ErrorView, accepts: ~w(html json)],
-  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   pubsub: [name: YourSanctuary.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
-  metadata: [:request_id]
+  metadata: [:user_id]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

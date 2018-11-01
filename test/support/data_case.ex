@@ -22,7 +22,6 @@ defmodule YourSanctuary.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import YourSanctuary.DataCase
-      import YourSanctuaryWeb.TestHelpers
     end
   end
 

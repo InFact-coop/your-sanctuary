@@ -11,8 +11,7 @@ config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: []
 
 # ## SSL Support
 #
@@ -36,8 +35,8 @@ config :your_sanctuary, YourSanctuaryWeb.Endpoint,
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/your_sanctuary/web/views/.*(ex)$},
-      ~r{lib/your_sanctuary/web/templates/.*(eex)$}
+      ~r{lib/your_sanctuary_web/views/.*(ex)$},
+      ~r{lib/your_sanctuary_web/templates/.*(eex)$}
     ]
   ]
 
@@ -52,7 +51,7 @@ config :phoenix, :stacktrace_depth, 20
 config :your_sanctuary, YourSanctuary.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "j0bb3hplop",
+  password: "postgres",
   database: "your_sanctuary_dev",
   hostname: "localhost",
   pool_size: 10
