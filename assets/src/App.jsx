@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./App.css";
+import "./styles/index.css";
 
 export default class App extends Component {
   state = {
@@ -8,7 +8,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App white">
         <h1>Welcome to {this.state.name}</h1>
       </div>
     );
