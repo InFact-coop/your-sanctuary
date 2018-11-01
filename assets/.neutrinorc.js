@@ -5,7 +5,8 @@ module.exports = {
       {
         html: {
           title: "Your Sanctuary"
-        }
+        },
+        babel: { plugins: ["babel-plugin-styled-components"] }
       }
     ],
     [

@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@neutrinojs/react": "^8.3.0",
+    "babel-plugin-styled-components": "^1.8.0",
     "neutrino": "^8.3.0",
     "postcss-custom-media": "^7.0.7",
     "postcss-custom-properties": "^8.0.8",
