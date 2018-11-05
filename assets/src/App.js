@@ -1,9 +1,10 @@
+import { Fragment } from "react"
 import { hot } from "react-hot-loader"
-import TitleConnected from "./title"
+import TitleConnected from "./components/Title"
 import { Helmet } from "react-helmet"
 
 const App = () => (
-  <div>
+  <Fragment>
     <Helmet
       script={[
         {
@@ -15,7 +16,7 @@ const App = () => (
     />
 
     <TitleConnected />
-  </div>
+  </Fragment>
 )
 
 export default hot(module)(App)

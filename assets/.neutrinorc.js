@@ -12,6 +12,14 @@ module.exports = {
         babel: {
           plugins: ["babel-plugin-styled-components"],
         },
+        devServer: {
+          proxy: {
+            "/api/*": {
+              target: "http://localhost:4000",
+              changeOrigin: true,
+            },
+          },
+        },
       },
     ],
     [
