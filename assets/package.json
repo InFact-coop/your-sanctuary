@@ -22,6 +22,7 @@
   "devDependencies": {
     "@neutrinojs/react": "^8.3.0",
     "autoprefixer": "^9.3.1",
+    "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.8.0",
     "eslint": "^4.19.1",
     "eslint-config-esnext": "^3.0.0",
