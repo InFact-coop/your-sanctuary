@@ -13,15 +13,15 @@ defmodule YourSanctuaryWeb.Router do
     plug :accepts, ["json"]
   end
 
-  # Use the default browser stack
+  scope "/api", YourSanctuaryWeb do
+    pipe_through :api
+
+    get "/info", PageController, :index
+  end
+
   scope "/", YourSanctuaryWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    forward "/", Plugs.StaticPlug
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", YourSanctuaryWeb do
-  #   pipe_through :api
-  # end
 end

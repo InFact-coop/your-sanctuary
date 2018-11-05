@@ -1,5 +1,5 @@
 {
-  "extends": ["esnext", "node", "plugin:react/recommended", "prettier"],
+  "extends": ["esnext", "plugin:react/recommended", "prettier"],
   "plugins": ["babel", "react"],
   "parser": "babel-eslint",
   "parserOptions": {
@@ -10,8 +10,7 @@
   },
   "env": {
     "browser": true,
-    "es6": true,
-    "node": true
+    "es6": true
   },
   "rules": {
     "react/prop-types": 0,
@@ -19,8 +18,6 @@
     "react/react-in-jsx-scope": 0,
     "no-invalid-this": 0,
     "babel/no-invalid-this": 1,
-    "no-use-before-define": ["error", { "variables": false }],
-    "import/no-commonjs": 0,
-    "import/no-nodejs-modules": 0
+    "no-use-before-define": ["error", { "variables": false }]
   }
 }
