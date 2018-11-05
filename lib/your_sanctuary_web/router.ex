@@ -17,7 +17,7 @@ defmodule YourSanctuaryWeb.Router do
   scope "/", YourSanctuaryWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    forward "/", Plugs.StaticPlug
   end
 
   # Other scopes may use custom stacks.
