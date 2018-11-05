@@ -1,3 +1,5 @@
 cd $phoenix_dir
 
-mix "${phoenix_ex}.digest" && mix build
+npm --prefix ./assets run build
+
+mix "${phoenix_ex}.digest"
