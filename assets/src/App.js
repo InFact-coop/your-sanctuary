@@ -1,7 +1,9 @@
 import { Fragment } from "react"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { hot } from "react-hot-loader"
-import TitleConnected from "./components/Title"
 import { Helmet } from "react-helmet"
+
+import { Home, Chat } from "./pages"
 
 const App = () => (
   <Fragment>
@@ -15,7 +17,12 @@ const App = () => (
       ]}
     />
 
-    <TitleConnected />
+    <Router>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/chat" exact component={Chat} />
+      </Switch>
+    </Router>
   </Fragment>
 )
 

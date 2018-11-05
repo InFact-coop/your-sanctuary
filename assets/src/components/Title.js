@@ -20,7 +20,7 @@ class TitleComponent extends Component {
     const { colour, changeColour } = this.props
     return (
       <Title className={colour}>
-        <p>Your Sanctuary Talk Tool</p>
+        <p>hello Sanctuary Talk Tool</p>
         <button onClick={changeColour} />
       </Title>
     )
