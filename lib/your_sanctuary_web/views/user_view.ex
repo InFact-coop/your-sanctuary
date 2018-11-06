@@ -10,11 +10,11 @@ defmodule YourSanctuaryWeb.UserView do
     %{data: render_one(user, UserView, "user.json")}
   end
 
-  def render("user.json", %{user: user}) do
-    %{id: user.id, email: user.email, uuid: user.uuid}
+  def render("show_user_with_jwt.json", %{user: user, jwt: jwt}) do
+    %{data: %{user: render_one(user, UserView, "user.json"), jwt: jwt}}
   end
 
-  def render("jwt.json", %{jwt: jwt}) do
-    %{jwt: jwt}
+  def render("user.json", %{user: user}) do
+    %{email: user.email, uuid: user.uuid}
   end
 end

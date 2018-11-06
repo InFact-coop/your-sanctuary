@@ -1,7 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 import styled from "styled-components"
-import { changeColour } from "../state/actions/auth"
+import { signUp } from "../state/actions/auth"
 
 const Title = styled.div.attrs({
   className: "f1 tc pv5 sans-serif",
@@ -17,11 +17,11 @@ class TitleComponent extends Component {
   }
 
   render() {
-    const { colour, changeColour } = this.props
+    const { colour, signUp } = this.props
     return (
       <Title className={colour}>
         <p>hello Sanctuary Talk Tool</p>
-        <button onClick={changeColour} />
+        <button onClick={signUp} />
       </Title>
     )
   }
@@ -29,5 +29,5 @@ class TitleComponent extends Component {
 
 export default connect(
   ({ auth: { colour } }) => ({ colour }),
-  { changeColour }
+  { signUp }
 )(TitleComponent)

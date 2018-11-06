@@ -1,6 +1,8 @@
 defmodule YourSanctuaryWeb.Router do
   use YourSanctuaryWeb, :router
 
+  alias YourSanctuaryWeb.Guardian
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session

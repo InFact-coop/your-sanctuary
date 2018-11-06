@@ -1,1 +1,1 @@
-export const CHANGE_COLOUR = "change_colour";
+export const SIGN_UP = "change_colour";
