@@ -4,7 +4,7 @@ defmodule YourSanctuary.Accounts.User do
 
   schema "users" do
     field :email, :string
-    field :uuid, :integer
+    field :uuid, :string
 
     timestamps()
   end

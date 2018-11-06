@@ -4,7 +4,7 @@ defmodule YourSanctuary.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :email, :string
-      add :uuid, :integer, null: false
+      add :uuid, :string, null: false
 
       timestamps()
     end

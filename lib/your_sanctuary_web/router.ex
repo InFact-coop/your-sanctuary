@@ -17,6 +17,7 @@ defmodule YourSanctuaryWeb.Router do
     pipe_through :api
 
     get "/info", PageController, :index
+    post "/sign_up", UserController, :create
   end
 
   scope "/", YourSanctuaryWeb do
