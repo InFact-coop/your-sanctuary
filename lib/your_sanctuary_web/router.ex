@@ -18,6 +18,7 @@ defmodule YourSanctuaryWeb.Router do
 
     get "/info", PageController, :index
     post "/sign_up", UserController, :create
+    post "/sign_in", UserController, :sign_in
   end
 
   scope "/", YourSanctuaryWeb do

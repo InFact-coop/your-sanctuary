@@ -4,9 +4,18 @@ defmodule YourSanctuary.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias YourSanctuary.Repo
+  alias YourSanctuary.{Repo, Accounts.User}
+  alias YourSanctuaryWeb.Guardian
 
-  alias YourSanctuary.Accounts.User
+  def token_sign_in(uuid) do
+    case get_user_by_uuid(uuid) do
+      %User{} = user ->
+        Guardian.encode_and_sign(user)
+
+      _ ->
+        {:error, :unauthorized}
+    end
+  end
 
   def get_user_by_uuid(uuid), do: Repo.get_by(User, uuid: uuid)
   def get_user_by_uuid_and_email(uuid, email), do: Repo.get_by(User, %{uuid: uuid, email: email})

@@ -16,6 +16,16 @@ defmodule YourSanctuaryWeb.UserController do
     end
   end
 
+  def sign_in(conn, %{"uuid" => uuid}) do
+    case Accounts.token_sign_in(uuid) do
+      {:ok, token, _claims} ->
+        conn |> render("jwt.json", jwt: token)
+
+      _ ->
+        {:error, :unauthorized}
+    end
+  end
+
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     render(conn, "show.json", user: user)
