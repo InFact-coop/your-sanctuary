@@ -16,5 +16,6 @@ defmodule YourSanctuary.Accounts.User do
     |> validate_required([:uuid])
     |> validate_format(:email, ~r/@/)
     |> unique_constraint(:email)
+    |> unique_constraint(:uuid)
   end
 end
