@@ -7,12 +7,10 @@ defmodule YourSanctuaryWeb.UserController do
 
   action_fallback YourSanctuaryWeb.FallbackController
 
-  def create(conn, %{"user" => user_params}) do
+  def sign_up(conn, %{"user" => user_params}) do
     with {:ok, %User{} = user} <- Accounts.create_user(user_params),
          {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       conn |> render("jwt.json", jwt: token)
-    else
-      error -> IO.inspect(error)
     end
   end
 
@@ -24,11 +22,6 @@ defmodule YourSanctuaryWeb.UserController do
       _ ->
         {:error, :unauthorized}
     end
-  end
-
-  def show(conn, %{"id" => id}) do
-    user = Accounts.get_user!(id)
-    render(conn, "show.json", user: user)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do

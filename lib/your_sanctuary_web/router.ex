@@ -13,11 +13,14 @@ defmodule YourSanctuaryWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :jwt_authenticated do
+    plug Guardian.AuthPipeline
+  end
+
   scope "/api", YourSanctuaryWeb do
     pipe_through :api
 
-    get "/info", PageController, :index
-    post "/sign_up", UserController, :create
+    post "/sign_up", UserController, :sign_up
     post "/sign_in", UserController, :sign_in
   end
 
