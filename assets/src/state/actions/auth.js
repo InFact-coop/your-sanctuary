@@ -18,6 +18,8 @@ export const signUp = (values, callback) => async dispatch => {
     dispatch(sign_up(data))
     callback()
   } catch (e) {
+    // eslint-disable-next-line
+    console.log("e", e)
     if (e.response.data.email) {
       const errorMessage = "This email ".concat(e.response.data.email)
       dispatch(setErrorFlash(errorMessage))
@@ -25,10 +27,8 @@ export const signUp = (values, callback) => async dispatch => {
   }
 }
 
-// eslint-disable-next-line
 export const signIn = ({ code }, callback) => async dispatch => {
   try {
-    console.log("code", code)
     const {
       data: { data },
     } = await axios.post("/api/sign_in", { uuid: code })
@@ -36,6 +36,7 @@ export const signIn = ({ code }, callback) => async dispatch => {
     dispatch(sign_in(data))
     callback()
   } catch (e) {
+    // eslint-disable-next-line
     console.log("e", e.response)
     if (e.response.data.error) {
       dispatch(setErrorFlash(e.response.data.error))

@@ -10,7 +10,6 @@ const FlashMessage = styled.p.attrs({
 class Layout extends Component {
   render() {
     const { flash, children } = this.props
-    console.log(this.props, "props")
     return (
       <main className="bg-yellow">
         {flash.info && (
