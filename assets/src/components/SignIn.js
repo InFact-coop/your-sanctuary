@@ -21,7 +21,12 @@ class SignIn extends Component {
   render() {
     return (
       <section>
-        <input type="code" value={this.state.code} onChange={this.setCode} />
+        <input
+          type="password"
+          autoComplete="off"
+          value={this.state.code}
+          onChange={this.setCode}
+        />
         <button onClick={this.handleSubmit}>Return to chat</button>
       </section>
     )
