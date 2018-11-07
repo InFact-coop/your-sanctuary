@@ -4,23 +4,44 @@ defmodule YourSanctuaryWeb.UserController do
   alias YourSanctuary.Accounts
   alias YourSanctuary.Accounts.User
   alias YourSanctuaryWeb.Guardian
+  alias YourSanctuaryWeb.ChangesetView
 
   action_fallback YourSanctuaryWeb.FallbackController
 
   def sign_up(conn, %{"user" => user_params}) do
-    with {:ok, %User{} = user} <- Accounts.create_user(user_params),
-         {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
-      conn |> render("show_user_with_jwt.json", jwt: token, user: user)
+    case Accounts.create_user(user_params) do
+      {:ok, %User{} = user} ->
+        with {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
+          conn
+          |> render("show_user_with_jwt.json", jwt: token, user: user)
+        else
+          _ ->
+            conn
+            |> put_status(:unauthorized)
+            |> json(%{error: "Could not authorise user"})
+        end
+
+      {:error, %Ecto.Changeset{} = error} ->
+        conn
+        |> put_status(:unauthorized)
+        |> json(ChangesetView.translate_errors(error))
+
+      _ ->
+        conn
+        |> put_status(:unauthorized)
+        |> json(%{error: "other error"})
     end
   end
 
   def sign_in(conn, %{"uuid" => uuid}) do
     case Accounts.token_sign_in(uuid) do
-      {:ok, token, _claims} ->
-        conn |> render("jwt.json", jwt: token)
+      {{:ok, token, _claims}, %User{} = user} ->
+        conn |> render("show_user_with_jwt.json", jwt: token, user: user)
 
       _ ->
-        {:error, :unauthorized}
+        conn
+        |> put_status(:unauthorized)
+        |> json(%{error: "Token not found"})
     end
   end
 

@@ -1,5 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
+import { compose } from "redux"
 import { signUp } from "../state/actions/auth"
 
 class SignUp extends Component {
@@ -12,8 +14,8 @@ class SignUp extends Component {
   }
 
   handleSubmit = () => {
-    const { signUp } = this.props
-    signUp({ email: this.state.email })
+    const { signUp, history } = this.props
+    signUp({ email: this.state.email }, () => history.push("/chat"))
   }
 
   render() {
@@ -26,7 +28,10 @@ class SignUp extends Component {
   }
 }
 
-export default connect(
-  null,
-  { signUp }
+export default compose(
+  withRouter,
+  connect(
+    null,
+    { signUp }
+  )
 )(SignUp)

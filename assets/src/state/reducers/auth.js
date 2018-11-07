@@ -1,15 +1,24 @@
-import { SIGN_UP } from "../actions/types"
+import { SIGN_UP, SIGN_IN } from "../actions/types"
 
 const INITIAL_STATE = {
-  colour: "white",
+  token: "",
+  uuid: "",
 }
-
-const newCol = state => (state.colour === "white" ? "yellow" : "white")
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_UP:
-      return { ...state, colour: newCol(state) }
+      return {
+        ...state,
+        uuid: action.payload.user.uuid,
+        token: action.payload.jwt,
+      }
+    case SIGN_IN:
+      return {
+        ...state,
+        uuid: action.payload.user.uuid,
+        token: action.payload.jwt,
+      }
     default:
       return state
   }
