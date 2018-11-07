@@ -14,14 +14,18 @@ config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "1202GDTuWOj+dNF2J6Ix/Tfi/AQQ86w+OIgKiGwz3BgZaMuVQQgLt6YZe2vQAykv",
   render_errors: [view: YourSanctuaryWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: YourSanctuary.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: YourSanctuary.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+# Guardian config
+config :your_sanctuary, YourSanctuaryWeb.Guardian,
+  issuer: "your-sanctuary",
+  secret_key: System.get_env("GUARDIAN_SECRET_KEY")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
