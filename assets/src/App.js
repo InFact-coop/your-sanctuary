@@ -5,6 +5,21 @@ import { Helmet } from "react-helmet"
 
 import { Home, Chat } from "./pages"
 
+import RequireAuth from "./higher-order-comps/RequireAuth"
+import Layout from "./components/Layout"
+import OnNavigate from "./higher-order-comps/OnNavigate"
+
+const LayoutRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={routeProps => (
+      <Layout {...routeProps}>
+        <Component {...routeProps} />
+      </Layout>
+    )}
+  />
+)
+
 const App = () => (
   <Fragment>
     <Helmet
@@ -18,10 +33,12 @@ const App = () => (
     />
 
     <Router>
-      <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/chat" exact component={Chat} />
-      </Switch>
+      <OnNavigate>
+        <Switch>
+          <LayoutRoute path="/" exact component={Home} />
+          <LayoutRoute path="/chat" exact component={RequireAuth(Chat)} />
+        </Switch>
+      </OnNavigate>
     </Router>
   </Fragment>
 )

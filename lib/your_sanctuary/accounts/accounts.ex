@@ -10,7 +10,7 @@ defmodule YourSanctuary.Accounts do
   def token_sign_in(uuid) do
     case get_user_by_uuid(uuid) do
       %User{} = user ->
-        Guardian.encode_and_sign(user)
+        {Guardian.encode_and_sign(user), user}
 
       _ ->
         {:error, :unauthorized}

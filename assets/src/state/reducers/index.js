@@ -1,6 +1,10 @@
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"
 
-import auth from "./auth";
+import auth from "./auth"
 
-export default combineReducers({ auth
- });
+import flash from "./flash"
+
+export default combineReducers({
+  auth,
+  flash,
+})
