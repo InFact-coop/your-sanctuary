@@ -11,7 +11,7 @@ class Layout extends Component {
   render() {
     const { flash, children } = this.props
     return (
-      <main className="bg-yellow">
+      <main>
         {flash.info && (
           <FlashMessage messageColour="green">{flash.info}</FlashMessage>
         )}
@@ -21,7 +21,10 @@ class Layout extends Component {
         {flash.error && (
           <FlashMessage messageColour="red">{flash.error}</FlashMessage>
         )}
-        <div>{children}</div>
+        <div className="w-100 vh-100 flex">
+          <section className="w-50 bg-blue">{children}</section>
+          <section className="w-50 bg-light-blue" />
+        </div>
       </main>
     )
   }

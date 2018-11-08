@@ -20,14 +20,17 @@ class SignIn extends Component {
 
   render() {
     return (
-      <section>
+      <section className="mh4 mb4 flex justify-center ">
         <input
+          className="pa2"
           type="password"
           autoComplete="off"
           value={this.state.code}
           onChange={this.setCode}
         />
-        <button onClick={this.handleSubmit}>Return to chat</button>
+        <button className="ml3 pa2" onClick={this.handleSubmit}>
+          Return to chat
+        </button>
       </section>
     )
   }
