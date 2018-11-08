@@ -33,6 +33,7 @@ export const signIn = ({ code }, callback) => async dispatch => {
       data: { data },
     } = await axios.post("/api/sign_in", { uuid: code })
 
+    sessionStorage.setItem("jwt", data.jwt)
     dispatch(sign_in(data))
     callback()
   } catch (e) {
