@@ -1,10 +1,13 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 
-
 import Title from "../components/Title"
 
 class Chat extends Component {
+  componentDidMount() {
+    if (!sessionStorage.getItem("uuid"))
+      sessionStorage.setItem("uuid", this.props.auth.uuid)
+  }
   insertCrispScript = () => {
     const {
       auth: { uuid },
@@ -22,10 +25,13 @@ class Chat extends Component {
     window.$crisp.push(["do", "chat:hide"])
     window.$crisp.push(["do", "session:reset", [false]])
     sessionStorage.removeItem("jwt")
+    sessionStorage.removeItem("uuid")
     return true
   }
 
   render() {
+    const uuid = sessionStorage.getItem("uuid")
+
     if (!window.$crisp) this.insertCrispScript()
 
     const initScript = () => {
@@ -39,22 +45,25 @@ class Chat extends Component {
 
     return (
       <div>
-        <a onClick={this.signOut} href="/">
-          Sign Out
-        </a>
-        {window.$crisp && (
-          <main>
-            This is chat
-            <Title />
-          </main>
-        )}
+        {window.$crisp && { uuid } && (
+            <main className="tc">
+              <Title />
+              <p className="f3 mv5 sans-serif">
+                Your code is <b>{uuid}</b>, don't forget it!{" "}
+              </p>
+              <p className="f3 mv2 sans-serif">
+                Done chatting? Sign out securely{" "}
+                <a onClick={this.signOut} href="/">
+                  here
+                </a>
+              </p>
+            </main>
+          )}
       </div>
     )
   }
 }
 
-export default connect(
-  ({ auth }) => ({
-    auth,
-  }),
-)(Chat)
+export default connect(({ auth }) => ({
+  auth,
+}))(Chat)
