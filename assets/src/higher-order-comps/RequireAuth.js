@@ -20,6 +20,7 @@ export default ChildComponent => {
     }
 
     render() {
+      if (!sessionStorage.getItem("jwt")) return this.shouldNavigateAway()
       return <ChildComponent {...this.props} />
     }
   }
