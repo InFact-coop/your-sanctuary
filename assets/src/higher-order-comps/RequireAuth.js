@@ -16,12 +16,17 @@ export default ChildComponent => {
     shouldNavigateAway() {
       if (!sessionStorage.getItem("jwt")) {
         this.props.history.push("/")
+        return null
       }
+      return null
     }
 
     render() {
-      if (!sessionStorage.getItem("jwt")) return this.shouldNavigateAway()
-      return <ChildComponent {...this.props} />
+      return !sessionStorage.getItem("jwt") ? (
+        this.shouldNavigateAway()
+      ) : (
+        <ChildComponent {...this.props} />
+      )
     }
   }
 
