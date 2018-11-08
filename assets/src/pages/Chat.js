@@ -1,49 +1,48 @@
-import { Link } from "react-router-dom"
 import { Component } from "react"
 import { connect } from "react-redux"
-import Title from "../components/Title"
+
 import { loadCrisp } from "../state/actions/crisp"
-import { Helmet } from "react-helmet"
+import { signOut } from "../state/actions/auth"
+
+import Title from "../components/Title"
 
 class Chat extends Component {
-  // componentDidMount() {
-  //   const {
-  //     auth: { uuid },
-  //     crisp: { crispId, crispExists },
-  //     loadCrisp,
-  //   } = this.props
+  insertCrispScript = () => {
+    const {
+      auth: { uuid },
+      crisp: { crispId },
+    } = this.props
 
-  //   if (!crispExists) {
-  //     const script = document.createElement("script")
-  //     script.type = "text/javascript"
-  //     script.id = "crispChat"
-  //     script.innerHTML = `$crisp = [];CRISP_TOKEN_ID = '';CRISP_WEBSITE_ID = '${crispId}';(function(){d=document;s=d.createElement('script');s.src='//client.crisp.chat/l.js';s.async=1;$crisp.push(['do', 'chat:open']);d.getElementsByTagName('head')[0].appendChild(s);})();`
-  //     this.instance.appendChild(script)
-
-  //     script.onload = () => {
-  //       loadCrisp()
-  //     }
-  //   }
-  // }
+    if (!window.$crisp) {
+      const script = document.createElement("script")
+      script.type = "text/javascript"
+      script.innerHTML = `$crisp = [];CRISP_TOKEN_ID = '${uuid}';CRISP_WEBSITE_ID = '${crispId}';(function(){d=document;s=d.createElement('script');s.src='//client.crisp.chat/l.js';s.async=1;d.getElementsByTagName('head')[0].appendChild(s);})();`
+      document.head.appendChild(script)
+    }
+  }
 
   render() {
-    const { crispExists } = this.props
+    const { signOut } = this.props
+    if (!window.$crisp) this.insertCrispScript()
+
+    const initScript = () => {
+      if (window.$crisp) {
+        return window.$crisp.push(["do", "chat:open"])
+      }
+      return setImmediate(initScript) // eslint-disable-line
+    }
+
+    initScript()
+
     return (
       <div>
-        <Helmet
-          script={[
-            {
-              type: "text/javascript",
-              innerHTML:
-                'window.$crisp=[];window.CRISP_WEBSITE_ID="eb431f6c-af5b-4a5b-8822-b71066070599";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();',
-            },
-          ]}
-        />
-        {crispExists && (
+        <a onClick={signOut} href="/">
+          Sign Out
+        </a>
+        {window.$crisp && (
           <main>
             This is chat
             <Title />
-            <Link to="/">go Home</Link>
           </main>
         )}
       </div>
@@ -56,5 +55,5 @@ export default connect(
     auth,
     crisp,
   }),
-  { loadCrisp }
+  { loadCrisp, signOut }
 )(Chat)

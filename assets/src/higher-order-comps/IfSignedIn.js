@@ -14,8 +14,8 @@ export default ChildComponent => {
     }
 
     shouldNavigateAway() {
-      if (!sessionStorage.getItem("jwt")) {
-        this.props.history.push("/")
+      if (sessionStorage.getItem("jwt")) {
+        this.props.history.push("/chat")
       }
     }
 
