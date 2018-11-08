@@ -43,10 +43,3 @@ export const signIn = ({ code }, callback) => async dispatch => {
     }
   }
 }
-
-export const signOut = () => () => {
-  window.$crisp.push(["do", "chat:hide"])
-  window.$crisp.push(["do", "session:reset", [false]])
-  sessionStorage.removeItem("jwt")
-  return true
-}

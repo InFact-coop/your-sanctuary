@@ -1,8 +1,6 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 
-import { loadCrisp } from "../state/actions/crisp"
-import { signOut } from "../state/actions/auth"
 
 import Title from "../components/Title"
 
@@ -10,19 +8,24 @@ class Chat extends Component {
   insertCrispScript = () => {
     const {
       auth: { uuid },
-      crisp: { crispId },
     } = this.props
 
     if (!window.$crisp) {
       const script = document.createElement("script")
       script.type = "text/javascript"
-      script.innerHTML = `$crisp = [];CRISP_TOKEN_ID = '${uuid}';CRISP_WEBSITE_ID = '${crispId}';(function(){d=document;s=d.createElement('script');s.src='//client.crisp.chat/l.js';s.async=1;d.getElementsByTagName('head')[0].appendChild(s);})();`
+      script.innerHTML = `$crisp = [];CRISP_TOKEN_ID = '${uuid}';CRISP_WEBSITE_ID = "eb431f6c-af5b-4a5b-8822-b71066070599";(function(){d=document;s=d.createElement('script');s.src='//client.crisp.chat/l.js';s.async=1;d.getElementsByTagName('head')[0].appendChild(s);})();`
       document.head.appendChild(script)
     }
   }
 
+  signOut = () => {
+    window.$crisp.push(["do", "chat:hide"])
+    window.$crisp.push(["do", "session:reset", [false]])
+    sessionStorage.removeItem("jwt")
+    return true
+  }
+
   render() {
-    const { signOut } = this.props
     if (!window.$crisp) this.insertCrispScript()
 
     const initScript = () => {
@@ -36,7 +39,7 @@ class Chat extends Component {
 
     return (
       <div>
-        <a onClick={signOut} href="/">
+        <a onClick={this.signOut} href="/">
           Sign Out
         </a>
         {window.$crisp && (
@@ -51,9 +54,7 @@ class Chat extends Component {
 }
 
 export default connect(
-  ({ auth, crisp }) => ({
+  ({ auth }) => ({
     auth,
-    crisp,
   }),
-  { loadCrisp, signOut }
 )(Chat)
