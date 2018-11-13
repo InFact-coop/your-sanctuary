@@ -41,7 +41,8 @@ defmodule YourSanctuary.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:plug_cowboy, "~> 1.0"},
-      {:guardian, "~> 1.0"}
+      {:guardian, "~> 1.0"},
+      {:bamboo, "~> 1.1"}
     ]
   end
 

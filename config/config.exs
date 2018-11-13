@@ -26,6 +26,11 @@ config :your_sanctuary, YourSanctuaryWeb.Guardian,
   issuer: "your-sanctuary",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
+config :your_sanctuary, YourSanctuary.Mailer,
+  adapter: Bamboo.MailgunAdapter,
+  api_key: System.get_env("MAILGUN_KEY"),
+  domain: System.get_env("MAILGUN_DOMAIN")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

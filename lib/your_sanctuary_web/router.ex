@@ -22,8 +22,9 @@ defmodule YourSanctuaryWeb.Router do
   scope "/api", YourSanctuaryWeb do
     pipe_through :api
 
-    post "/sign_up", UserController, :sign_up
-    post "/sign_in", UserController, :sign_in
+    post "/sign-up", UserController, :sign_up
+    post "/sign-in", UserController, :sign_in
+    post "/code-reminder", PasswordController, :code_reminder
   end
 
   scope "/", YourSanctuaryWeb do
