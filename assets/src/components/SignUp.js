@@ -20,9 +20,16 @@ class SignUp extends Component {
 
   render() {
     return (
-      <section>
-        <input type="email" value={this.state.email} onChange={this.setEmail} />
-        <button onClick={this.handleSubmit}>Start new chat</button>
+      <section className="mh4 mb4 flex justify-center">
+        <input
+          className="pa2"
+          type="email"
+          value={this.state.email}
+          onChange={this.setEmail}
+        />
+        <button className="ml3 pa2" onClick={this.handleSubmit}>
+          Start new chat
+        </button>
       </section>
     )
   }
