@@ -1,32 +1,44 @@
-import SignUp from "../components/SignUp"
-import Title from "../components/Title"
-import SignIn from "../components/SignIn"
-import ForgotCode from "../components/ForgotCode"
+import styled from "styled-components"
 
-const Home = () => (
+import { Subline, SubButtonText } from "../components/Text"
+import { Button } from "../components/Button"
+
+const HomeHeadline = styled.p.attrs({
+  className: "font-3 font-1-ns b blue",
+})``
+
+const Home = ({ history }) => (
   <section>
-    <Title />
-    <div>
-      <p className="f3 ma4 sans-serif">
-        Start a new chat by clicking here. You'll get a code to sign in with
-        next time. If you want us to be able to remind you of your code, put
-        your email in the box before starting the chat.
-      </p>
-      <SignUp />
-    </div>
+    <HomeHeadline className="mb2"> Confidential </HomeHeadline>
+    <Subline className="mb4 mb7-ns mh3 mh0-ns">
+      Free confidential chat offering you support when you need it.
+    </Subline>
 
-    <div>
-      <p className="f3 ma4 sans-serif">
-        Chatted to us before? Put your unique code in below to return to your
-        last chat.
-      </p>
-      <SignIn />
-    </div>
-    <div>
-      <p className="f3 ma4 sans-serif">
-        Forgot your code? Put your email in and we will email your code
-      </p>
-      <ForgotCode />
+    <div className="flex-ns justify-between w-100-ns">
+      <div className="flex flex-column mb4 mb0-ns tc w-70 center w-50-ns mr1-ns">
+        <Button
+          buttonColour="white"
+          className="mr2-ns"
+          onClick={() => history.push("/sign-up")}
+        >
+          Chat to us
+        </Button>
+        <SubButtonText className="mr2-ns">
+          To start talking straight away click here to recieve your unique code
+        </SubButtonText>
+      </div>
+      <div className="flex flex-column mb4 mb0-ns w-70 center tc w-50-ns ml1-ns">
+        <Button
+          buttonColour="white"
+          className="ml2-ns"
+          onClick={() => history.push("/sign-up")}
+        >
+          Continue a conversation
+        </Button>
+        <SubButtonText className="ml2-ns">
+          If you have spoken to us before and have an access code
+        </SubButtonText>
+      </div>
     </div>
   </section>
 )
