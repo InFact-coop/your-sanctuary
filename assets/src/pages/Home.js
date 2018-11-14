@@ -10,7 +10,7 @@ const HomeHeadline = styled.p.attrs({
 const Home = ({ history }) => (
   <section>
     <HomeHeadline className="mb2"> Confidential </HomeHeadline>
-    <Subline className="mb4 mb7-ns mh3 mh0-ns">
+    <Subline className="mb4 mb7-ns">
       Free confidential chat offering you support when you need it.
     </Subline>
 
@@ -19,7 +19,7 @@ const Home = ({ history }) => (
         <Button
           buttonColour="white"
           className="mr2-ns"
-          onClick={() => history.push("/sign-up")}
+          onClick={() => history.push("/sign-up-1")}
         >
           Chat to us
         </Button>
