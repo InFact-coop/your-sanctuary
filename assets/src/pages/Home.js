@@ -1,6 +1,7 @@
 import SignUp from "../components/SignUp"
 import Title from "../components/Title"
 import SignIn from "../components/SignIn"
+import ForgotCode from "../components/ForgotCode"
 
 const Home = () => (
   <section>
@@ -20,6 +21,12 @@ const Home = () => (
         last chat.
       </p>
       <SignIn />
+    </div>
+    <div>
+      <p className="f3 ma4 sans-serif">
+        Forgot your code? Put your email in and we will email your code
+      </p>
+      <ForgotCode />
     </div>
   </section>
 )
