@@ -15,32 +15,34 @@
   --serif: georgia, serif;
   --code: consolas, monaco, monospace;
 
-  --font-size-headline: 6rem;
-  --font-size-subheadline: 5rem;
-  --font-size-1: 3rem;
-  --font-size-2: 2.25rem;
-  --font-size-3: 1.5rem;
-  --font-size-4: 1.25rem;
-  --font-size-5: 1rem;
-  --font-size-6: 0.875rem;
-  --font-size-7: 0.75rem;
+  --font-size-1: 48px;
+  --font-size-2: 36px;
+  --font-size-3: 32px;
+  --font-size-4: 28px;
+  --font-size-5: 20px;
+  --font-size-6: 16px;
+  --font-size-7: 14px;
 
   --letter-spacing-tight: -0.05em;
   --letter-spacing-1: 0.1em;
   --letter-spacing-2: 0.25em;
 
-  --line-height-solid: 1;
-  --line-height-title: 1.25;
-  --line-height-copy: 1.5;
+  --line-height-1: 52px;
+  --line-height-2: 40px;
+  --line-height-3: 36px;
+  --line-height-4: 32px;
+  --line-height-5: 24px;
+  --line-height-6: 20px;
+  --line-height-7: 18px;
 
   --spacing-none: 0;
-  --spacing-extra-small: 0.25rem;
-  --spacing-small: 0.5rem;
-  --spacing-medium: 1rem;
-  --spacing-large: 2rem;
-  --spacing-extra-large: 4rem;
-  --spacing-extra-extra-large: 8rem;
-  --spacing-extra-extra-extra-large: 16rem;
+  --spacing-extra-small: 4px;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+  --spacing-extra-large: 28px;
+  --spacing-extra-extra-large: 48px;
+  --spacing-extra-extra-extra-large: 64px;
 
   --height-1: 1rem;
   --height-2: 2rem;
@@ -80,10 +82,10 @@
   --border-width-5: 2rem;
 
   --box-shadow-1: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
-  --box-shadow-2: 0px 0px 8px 2px rgba(0, 0, 0, 0.2);
-  --box-shadow-3: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
-  --box-shadow-4: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
-  --box-shadow-5: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  --box-shadow-2: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow-3: 7px 16px 24px 0 rgba(0, 0, 0, 0.1);
+  --box-shadow-4: 12px 16px 32px 0px rgba(0, 0, 0, 0.3);
+  --box-shadow-5: inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
 
   --black: #000;
   --near-black: #111;
@@ -94,7 +96,7 @@
   --light-silver: #aaa;
   --moon-gray: #ccc;
   --light-gray: #eee;
-  --near-white: #f4f4f4;
+  --near-white: #fafafa;
   --white: #fff;
 
   --transparent: transparent;
@@ -126,11 +128,11 @@
   --white-0125: rgba(255, 255, 255, 0.0125);
 
   --dark-red: #e7040f;
-  --red: #ff4136;
+  --red: #ff000080;
   --light-red: #ff725c;
   --orange: #ff6300;
   --gold: #ffb700;
-  --yellow: #ffd700;
+  --yellow: #ffb30080;
   --light-yellow: #fbf1a9;
   --purple: #5e2ca5;
   --light-purple: #a463f2;
@@ -139,12 +141,12 @@
   --pink: #ff80cc;
   --light-pink: #ffa3d7;
   --dark-green: #137752;
-  --green: #19a974;
+  --green: #00d59280;
   --light-green: #9eebcf;
   --navy: #001b44;
   --dark-blue: #00449e;
-  --blue: #357edd;
-  --light-blue: #96ccff;
+  --blue: #0099cc;
+  --light-blue: #00baf7;
   --lightest-blue: #cdecff;
   --washed-blue: #f6fffe;
   --washed-green: #e8fdf5;
