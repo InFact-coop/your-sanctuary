@@ -21,11 +21,11 @@ class Chat extends Component {
   }
 
   signOut = () => {
-    window.$crisp.push(["do", "chat:hide"])
+    window.$crisp.push(["set", "session:data", [[["waiting", false]]]])
     window.$crisp.push(["do", "session:reset", [false]])
     sessionStorage.removeItem("jwt")
     sessionStorage.removeItem("uuid")
-    return true
+    window.location.reload(true)
   }
 
   render() {
@@ -52,9 +52,9 @@ class Chat extends Component {
               </p>
               <p className="f3 mv2 sans-serif">
                 Done chatting? Sign out securely{" "}
-                <a onClick={this.signOut} href="/">
+                <button onClick={() => this.signOut()} href="/">
                   here
-                </a>
+                </button>
               </p>
             </main>
           )}
