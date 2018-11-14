@@ -1,7 +1,6 @@
 import { Component } from "react"
 import { connect } from "react-redux"
-
-import Title from "../components/Title"
+import { Headline } from "../components/Text"
 
 class Chat extends Component {
   componentDidMount() {
@@ -47,7 +46,7 @@ class Chat extends Component {
       <div>
         {window.$crisp && { uuid } && (
             <main className="tc">
-              <Title />
+              <Headline>Supporting Survivors of Domestic Abuse</Headline>
               <p className="f3 mv5 sans-serif">
                 Your code is <b>{uuid}</b>, don't forget it!{" "}
               </p>
