@@ -42,6 +42,7 @@ defmodule YourSanctuary.Mixfile do
       {:gettext, "~> 0.11"},
       {:plug_cowboy, "~> 1.0"},
       {:guardian, "~> 1.0"},
+      {:envy, "~> 1.1.1"},
       {:bamboo, "~> 1.1"}
     ]
   end

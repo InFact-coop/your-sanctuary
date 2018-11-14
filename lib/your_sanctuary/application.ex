@@ -6,12 +6,18 @@ defmodule YourSanctuary.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
+    # import env variables from .env file
+    unless Mix.env() == :prod do
+      Envy.auto_load()
+      Envy.reload_config()
+    end
+
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
       supervisor(YourSanctuary.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(YourSanctuaryWeb.Endpoint, []),
+      supervisor(YourSanctuaryWeb.Endpoint, [])
       # Start your own worker by calling: YourSanctuary.Worker.start_link(arg1, arg2, arg3)
       # worker(YourSanctuary.Worker, [arg1, arg2, arg3]),
     ]
