@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { connect } from "react-redux"
-import { Headline } from "../components/Text"
+import { Headline, Subline } from "../components/Text"
 
 class Chat extends Component {
   insertCrispScript = () => {
@@ -15,11 +15,14 @@ class Chat extends Component {
   }
 
   signOut = () => {
-    window.$crisp.push(["do", "chat:hide"])
-    window.$crisp.push(["do", "session:reset", [false]])
+    window.$crisp.push(["set", "session:data", [[["waiting", false]]]])
+    const data = window.$crisp.get("session:data")
+    if (data.consent && (data.consent === "no" || data.consent === null)) {
+      window.$crisp.push(["do", "session:reset", [false]])
+    }
     sessionStorage.removeItem("jwt")
     sessionStorage.removeItem("uuid")
-    return true
+    window.location.reload(true)
   }
 
   render() {
@@ -40,18 +43,22 @@ class Chat extends Component {
 
     return (
       <div>
-        <main className="tc">
-          <Headline>Supporting Survivors of Domestic Abuse</Headline>
-          <p className="f3 mv5 sans-serif">
-            Your code is <b>{uuid}</b>, don't forget it!{" "}
-          </p>
-          <p className="f3 mv2 sans-serif">
-            Done chatting? Sign out securely{" "}
-            <a onClick={this.signOut} href="/">
-              here
-            </a>
-          </p>
-        </main>
+        <Headline className="mb2">
+          Supporting Survivors of Domestic Abuse
+        </Headline>
+        <Subline className="mb4">
+          We offer sanctuary, support and empowerment to anyone affected by
+          Domestic Abuse.
+        </Subline>
+        <Subline className="mb4 mb7-ns">
+          Your code is: <b>{uuid}</b>
+        </Subline>
+        <Subline
+          onClick={() => this.signOut()}
+          className="mb4 underline mb7-ns"
+        >
+          Log out here
+        </Subline>
       </div>
     )
   }

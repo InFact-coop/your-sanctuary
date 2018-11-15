@@ -41,7 +41,7 @@ defmodule YourSanctuaryWeb.UserController do
       _ ->
         conn
         |> put_status(:unauthorized)
-        |> json(%{error: "Token not found"})
+        |> json(%{error: "We do not recognise that code"})
     end
   end
 
