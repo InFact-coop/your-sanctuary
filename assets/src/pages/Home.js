@@ -19,7 +19,7 @@ const Home = ({ history }) => (
         <Button
           buttonColour="white"
           className="mr2-ns"
-          onClick={() => history.push("/sign-up-1")}
+          onClick={() => history.push("/signup-1")}
         >
           Chat to us
         </Button>
@@ -31,7 +31,7 @@ const Home = ({ history }) => (
         <Button
           buttonColour="white"
           className="ml2-ns"
-          onClick={() => history.push("/sign-up")}
+          onClick={() => history.push("/login")}
         >
           Continue a conversation
         </Button>

@@ -25,7 +25,7 @@ const SignUp2 = ({ history, signUp }) => (
       forget your code you will have to begin a new chat.
     </BodyText>
     <div className="flex flex-column flex-row-ns justify-center items-center justify-end-ns">
-      <Button className="w5" onClick={() => history.push("/sign-up-3")}>
+      <Button className="w5" onClick={() => history.push("/signup-3")}>
         Continue with email
       </Button>
       <Button
