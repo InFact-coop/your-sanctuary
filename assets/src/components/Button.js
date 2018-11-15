@@ -16,6 +16,7 @@ const RoundButton = styled.div.attrs({
   background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;
+  border: none;
 `
 
 export { Button, RoundButton }
