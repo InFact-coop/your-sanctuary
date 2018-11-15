@@ -2,6 +2,8 @@ import { connect } from "react-redux"
 import { Component } from "react"
 import styled from "styled-components"
 import { FooterText } from "./Text"
+import lady from "../static/images/image_bg.png"
+import logo from "../static/images/logo_transparent.png"
 
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
@@ -11,7 +13,7 @@ const FlashMessage = styled.p.attrs({
 const MainImageWeb = styled.div.attrs({
   className: "w-50 dn db-ns",
 })`
-  background-image: url("../static/images/image_bg.png");
+  background-image: url(${lady});
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -25,7 +27,7 @@ const MainContent = styled.div.attrs({
 `
 
 const LogoImg = styled.img.attrs({
-  src: "../static/images/logo_transparent.png",
+  src: logo,
 })`
   height: 5rem;
 `
@@ -70,7 +72,7 @@ class Layout extends Component {
             <FlashMessage messageColour="red">{flash.error}</FlashMessage>
           )}
           <Logo />
-          <div className="mh7-ns ph4-ns">{children}</div>
+          <div className="mh2 mh7-ns ph4-ns">{children}</div>
           <Footer>
             <FooterText className="mh7-ns">
               This service is available <b>Monday-Friday 10am-2pm</b>

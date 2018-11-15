@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Headline = styled.p.attrs({
-  className: "font-3 font-2-ns",
+  className: "font-3 font-2-ns b",
 })``
 
 const Subline = styled.p.attrs({

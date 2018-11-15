@@ -2,7 +2,7 @@ import { Fragment } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { hot } from "react-hot-loader"
 
-import { Home, Chat } from "./pages"
+import { Home, Chat, SignUp1, SignUp2, SignUp3 } from "./pages"
 
 import RequireAuth from "./higher-order-comps/RequireAuth"
 import IfSignedIn from "./higher-order-comps/IfSignedIn"
@@ -27,6 +27,9 @@ const App = () => (
         <Switch>
           <LayoutRoute path="/" exact component={IfSignedIn(Home)} />
           <LayoutRoute path="/chat" exact component={RequireAuth(Chat)} />
+          <LayoutRoute path="/sign-up-1" exact component={SignUp1} />
+          <LayoutRoute path="/sign-up-2" exact component={SignUp2} />
+          <LayoutRoute path="/sign-up-3" exact component={SignUp3} />
         </Switch>
       </OnNavigate>
     </Router>
