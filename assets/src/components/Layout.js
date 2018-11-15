@@ -1,7 +1,11 @@
+import { Component, Fragment } from "react"
 import { connect } from "react-redux"
-import { Component } from "react"
 import styled from "styled-components"
+
 import { FooterText } from "./Text"
+import EmailModal from "./modals/EmailModal"
+import { emailModal } from "./modals/modals"
+
 import lady from "../static/images/image_bg.png"
 import logo from "../static/images/logo_transparent.png"
 
@@ -56,40 +60,54 @@ const FooterRight = styled.div.attrs({
   bottom: 0;
 `
 
+const Modal = ({ modal }) => {
+  switch (modal) {
+    case emailModal:
+      return <EmailModal />
+    default:
+      return <div />
+  }
+}
+
 class Layout extends Component {
   render() {
     const { flash, children } = this.props
     return (
-      <main className="flex sans-serif">
-        <MainContent>
-          {flash.info && (
-            <FlashMessage messageColour="green">{flash.info}</FlashMessage>
-          )}
-          {flash.warning && (
-            <FlashMessage messageColour="yellow">{flash.warning}</FlashMessage>
-          )}
-          {flash.error && (
-            <FlashMessage messageColour="red">{flash.error}</FlashMessage>
-          )}
-          <Logo />
-          <div className="mh2 mh7-ns ph4-ns">{children}</div>
-          <Footer>
-            <FooterText className="mh7-ns">
-              This service is available <b>Monday-Friday 10am-2pm</b>
-            </FooterText>
-            <a
-              href="../static/your-sanctuary-privacy-policy.pdf"
-              download
-              className="mh7-ns white font-7 font-6-ns"
-            >
-              Privacy Policy
-            </a>
-          </Footer>
-        </MainContent>
-        <MainImageWeb>
-          <FooterRight />
-        </MainImageWeb>
-      </main>
+      <Fragment>
+        {flash.modal && <Modal modal={flash.modal} />}
+        <main className="flex sans-serif">
+          <MainContent>
+            {flash.info && (
+              <FlashMessage messageColour="green">{flash.info}</FlashMessage>
+            )}
+            {flash.warning && (
+              <FlashMessage messageColour="yellow">
+                {flash.warning}
+              </FlashMessage>
+            )}
+            {flash.error && (
+              <FlashMessage messageColour="red">{flash.error}</FlashMessage>
+            )}
+            <Logo />
+            <div className="mh2 mh7-ns ph4-ns">{children}</div>
+            <Footer>
+              <FooterText className="mh7-ns">
+                This service is available <b>Monday-Friday 10am-2pm</b>
+              </FooterText>
+              <a
+                href="../static/your-sanctuary-privacy-policy.pdf"
+                download
+                className="mh7-ns white font-7 font-6-ns"
+              >
+                Privacy Policy
+              </a>
+            </Footer>
+          </MainContent>
+          <MainImageWeb>
+            <FooterRight />
+          </MainImageWeb>
+        </main>
+      </Fragment>
     )
   }
 }

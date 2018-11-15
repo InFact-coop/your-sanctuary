@@ -24,12 +24,12 @@ const SignUp2 = ({ history, signUp }) => (
       <span className="b"> not to give</span> us your email address and you
       forget your code you will have to begin a new chat.
     </BodyText>
-    <div className="flex flex-column flex-row-ns justify-center items-center justify-end-ns">
-      <Button className="w5" onClick={() => history.push("/signup-3")}>
+    <div className="flex flex-column flex-row-ns justify-center items-center justify-start-ns">
+      <Button className="w5 mb3" onClick={() => history.push("/signup-3")}>
         Continue with email
       </Button>
       <Button
-        className="ml3-ns bg-blue white w5"
+        className="ml3-ns bg-blue white w5 mb4"
         onClick={() => signUp({}, () => history.push("/chat"))}
       >
         Skip this step
