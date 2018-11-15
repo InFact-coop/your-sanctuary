@@ -1,23 +1,14 @@
 import { Component } from "react"
 import { connect } from "react-redux"
-import styled from "styled-components"
 
 import { signUp } from "../state/actions/auth"
+import { setErrorFlash } from "../state/actions/flash"
 
 import { BodyText } from "../components/Text"
 import { RoundButton } from "../components/Button"
-import { setErrorFlash } from "../state/actions/flash"
+import { Input } from "../components/Form"
 
 const SubmitButton = RoundButton.withComponent("button")
-
-const EmailInput = styled.input.attrs({
-  className:
-    "b--blue ba font-6 bg-near-white br-pill pa2 w5 tc black-50 outline-0",
-})`
-  ::placeholder {
-    color: var(--black-50);
-  }
-`
 
 class SignUp3 extends Component {
   state = {
@@ -49,13 +40,13 @@ class SignUp3 extends Component {
         <BodyText className="mb4">Please enter your email below</BodyText>
         <form onSubmit={this.onSubmit}>
           <div className="flex flex-column items-start-ns items-center mb4">
-            <EmailInput
+            <Input
               onChange={this.onEmailChange}
               type="email"
               placeholder="Your email"
               className="mb4"
             />
-            <EmailInput
+            <Input
               onChange={this.onEmailConfirmationChange}
               type="email"
               placeholder="Confirm your email"
