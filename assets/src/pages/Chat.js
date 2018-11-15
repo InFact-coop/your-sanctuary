@@ -55,7 +55,7 @@ class Chat extends Component {
         </Subline>
         <Subline
           onClick={() => this.signOut()}
-          className="mb4 underline mb7-ns"
+          className="mb4 underline mb7-ns pointer"
         >
           Log out here
         </Subline>

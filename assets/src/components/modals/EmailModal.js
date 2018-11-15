@@ -34,9 +34,15 @@ const EmailModal = ({ clearFlashMessages }) => (
       <Headline>Thank you!</Headline>
       <Subline className="mb4">We have now added your email</Subline>
       <BodyText className="mb4">
-        Just a reminder that we will never use your email address other than to
-        remind you of your code and that when we send you your reminder email it
-        will appear in your inbox as promotional code to win a prize.
+        Just a reminder that{" "}
+        <span className="underline">
+          we will never use your email address other than to remind you of your
+          code
+        </span>{" "}
+        and that when we send you your reminder email{" "}
+        <span className="underline">
+          it will appear in your inbox as promotional code to win a prize.
+        </span>
       </BodyText>
       <Button buttonColour="white" onClick={clearFlashMessages}>
         Start chatting
