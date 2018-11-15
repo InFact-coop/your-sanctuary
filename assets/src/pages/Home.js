@@ -18,7 +18,7 @@ const Home = ({ history }) => (
       <div className="flex flex-column mb4 mb0-ns tc w-70 center w-50-ns mr1-ns">
         <Button
           buttonColour="white"
-          className="mr2-ns"
+          className="mr2-ns mb3"
           onClick={() => history.push("/signup-1")}
         >
           Chat to us
@@ -30,7 +30,7 @@ const Home = ({ history }) => (
       <div className="flex flex-column mb4 mb0-ns w-70 center tc w-50-ns ml1-ns">
         <Button
           buttonColour="white"
-          className="ml2-ns"
+          className="ml2-ns mb3"
           onClick={() => history.push("/login")}
         >
           Continue a conversation

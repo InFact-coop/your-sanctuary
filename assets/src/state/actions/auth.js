@@ -3,7 +3,8 @@ import axios from "axios"
 
 import { SIGN_UP, SIGN_IN } from "./types"
 
-import { setErrorFlash, setInfoFlash } from "./flash"
+import { setErrorFlash, setInfoFlash, setModal } from "./flash"
+import { emailModal } from "../../components/modals/modals"
 
 const sign_up = createAction(SIGN_UP)
 const sign_in = createAction(SIGN_IN)
@@ -19,6 +20,7 @@ export const signUp = (values, callback) => async dispatch => {
     sessionStorage.setItem("uuid", data.user.uuid)
     dispatch(sign_up(data))
     callback()
+    if (values.email) dispatch(setModal(emailModal))
   } catch (e) {
     // eslint-disable-next-line
     console.log("e", e)
