@@ -3,8 +3,8 @@ import axios from "axios"
 
 import { SIGN_UP, SIGN_IN } from "./types"
 
-import { setErrorFlash, setInfoFlash, setModal } from "./flash"
-import { emailModal } from "../../components/modals/modals"
+import { setErrorFlash, setModal } from "./flash"
+import { emailModal, reminderModal } from "../../components/modals/modals"
 
 const sign_up = createAction(SIGN_UP)
 const sign_in = createAction(SIGN_IN)
@@ -52,12 +52,8 @@ export const signIn = ({ code }, callback) => async dispatch => {
 
 export const requestCodeReminder = ({ email }) => async dispatch => {
   try {
-    const {
-      data: { info },
-    } = await axios.post("/api/code-reminder/", {
-      email,
-    })
-    dispatch(setInfoFlash(info))
+    axios.post("/api/code-reminder/", { email })
+    dispatch(setModal(reminderModal))
   } catch (e) {
     if (e.response && e.response.data && e.response.data.error) {
       return dispatch(setErrorFlash(e.response.data.error))

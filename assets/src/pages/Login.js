@@ -36,7 +36,7 @@ class Login extends Component {
           If you have spoken to us before please enter your code below
         </BodyText>
         <form onSubmit={this.onSubmit}>
-          <div className="flex flex-column flex-row-ns items-center items-start-ns justify-center mb4">
+          <div className="flex flex-column flex-row-ns items-center items-start-ns justify-center-s mb4">
             <div className="flex flex-column">
               <Input
                 onChange={this.onCodeChange}
