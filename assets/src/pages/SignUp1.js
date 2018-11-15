@@ -19,8 +19,8 @@ const SignUp1 = ({ history }) => (
       promotional code to win a prize. This is to avoid anyone else who may have
       access to your inbox accessing your confidential chat.
     </BodyText>
-    <div className="flex justify-center items-center justify-end-ns">
-      <BodyText className="ttu mr2 b">Next</BodyText>
+    <div className="flex justify-center items-center justify-end-ns mb4">
+      <BodyText className="ttu mr3 b">Next</BodyText>
       <RoundButton onClick={() => history.push("/sign-up-2")} />
     </div>
   </section>
