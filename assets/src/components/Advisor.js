@@ -45,10 +45,7 @@ class AdvisorDesktop extends Component {
   }
 
   render() {
-    const inHours = this.checkIfInHours()
-
-    if (inHours) return <Advisor available={true} />
-    return <Advisor available={false} />
+    return <Advisor available={this.checkIfInHours()} />
   }
 }
 
