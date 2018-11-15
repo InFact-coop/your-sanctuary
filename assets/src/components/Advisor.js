@@ -1,5 +1,5 @@
 import { Component } from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import advisorGreen from "../static/icons/Advisor_green.svg"
 import advisorRed from "../static/icons/Advisor_red.svg"
 
