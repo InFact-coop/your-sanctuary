@@ -6,6 +6,7 @@ import { FooterText } from "./Text"
 import EmailModal from "./modals/EmailModal"
 import { emailModal } from "./modals/modals"
 
+import { AdvisorDesktop } from "./Advisor"
 import lady from "../static/images/image_bg.png"
 import logo from "../static/images/logo_transparent.png"
 
@@ -44,10 +45,11 @@ const Logo = () => (
 
 const Footer = styled.div.attrs({
   className:
-    "w-100 bg-blue white mt3 h4-ns pa4-ns pa3 tc tl-ns flex flex-column justify-between",
+    "w-100 bg-blue white mt3 pa4-ns pa3 tc tl-ns flex flex-column justify-between",
 })`
   position: sticky;
   top: 100vh;
+  height: 10rem;
   @media (max-width: 30em) {
     height: 6rem;
   }
@@ -91,9 +93,12 @@ class Layout extends Component {
             <Logo />
             <div className="mh2 mh7-ns ph4-ns">{children}</div>
             <Footer>
-              <FooterText className="mh7-ns">
-                This service is available <b>Monday-Friday 10am-2pm</b>
-              </FooterText>
+              <div className="ml7-ns flex justify-between">
+                <FooterText>
+                  This service is available <b>Monday-Friday 10am-2pm</b>
+                </FooterText>
+                <AdvisorDesktop />
+              </div>
               <a
                 href="../static/your-sanctuary-privacy-policy.pdf"
                 download
