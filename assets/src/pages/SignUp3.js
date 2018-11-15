@@ -48,7 +48,7 @@ class SignUp3 extends Component {
       <section>
         <BodyText className="mb4">Please enter your email below</BodyText>
         <form onSubmit={this.onSubmit}>
-          <div className="flex flex-column mb4">
+          <div className="flex flex-column items-start-ns items-center mb4">
             <EmailInput
               onChange={this.onEmailChange}
               type="email"
