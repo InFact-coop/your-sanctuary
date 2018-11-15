@@ -3,14 +3,8 @@ import { connect } from "react-redux"
 import { Headline } from "../components/Text"
 
 class Chat extends Component {
-  componentDidMount() {
-    if (!sessionStorage.getItem("uuid"))
-      sessionStorage.setItem("uuid", this.props.auth.uuid)
-  }
   insertCrispScript = () => {
-    const {
-      auth: { uuid },
-    } = this.props
+    const uuid = sessionStorage.getItem("uuid")
 
     if (!window.$crisp) {
       const script = document.createElement("script")
@@ -45,22 +39,22 @@ class Chat extends Component {
 
     initScript()
 
+    if (!uuid || !window.$crisp) return <div />
+
     return (
       <div>
-        {window.$crisp && { uuid } && (
-            <main className="tc">
-              <Headline>Supporting Survivors of Domestic Abuse</Headline>
-              <p className="f3 mv5 sans-serif">
-                Your code is <b>{uuid}</b>, don't forget it!{" "}
-              </p>
-              <p className="f3 mv2 sans-serif">
-                Done chatting? Sign out securely{" "}
-                <button onClick={() => this.signOut()} href="/">
-                  here
-                </button>
-              </p>
-            </main>
-          )}
+        <main className="tc">
+          <Headline>Supporting Survivors of Domestic Abuse</Headline>
+          <p className="f3 mv5 sans-serif">
+            Your code is <b>{uuid}</b>, don't forget it!{" "}
+          </p>
+          <p className="f3 mv2 sans-serif">
+            Done chatting? Sign out securely{" "}
+            <a onClick={this.signOut} href="/">
+              here
+            </a>
+          </p>
+        </main>
       </div>
     )
   }

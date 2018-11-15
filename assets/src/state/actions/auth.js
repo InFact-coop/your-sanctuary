@@ -16,6 +16,7 @@ export const signUp = (values, callback) => async dispatch => {
     } = await axios.post("/api/sign-up", { user: values })
 
     sessionStorage.setItem("jwt", data.jwt)
+    sessionStorage.setItem("uuid", data.user.uuid)
     dispatch(sign_up(data))
     callback()
   } catch (e) {
@@ -35,6 +36,7 @@ export const signIn = ({ code }, callback) => async dispatch => {
     } = await axios.post("/api/sign-in", { uuid: code })
 
     sessionStorage.setItem("jwt", data.jwt)
+    sessionStorage.setItem("uuid", data.user.uuid)
     dispatch(sign_in(data))
     callback()
   } catch (e) {
