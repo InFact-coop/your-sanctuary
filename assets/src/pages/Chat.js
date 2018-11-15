@@ -22,7 +22,10 @@ class Chat extends Component {
 
   signOut = () => {
     window.$crisp.push(["set", "session:data", [[["waiting", false]]]])
-    window.$crisp.push(["do", "session:reset", [false]])
+    const data = window.$crisp.get("session:data")
+    if (data.consent && (data.consent === "no" || data.consent === null)) {
+      window.$crisp.push(["do", "session:reset", [false]])
+    }
     sessionStorage.removeItem("jwt")
     sessionStorage.removeItem("uuid")
     window.location.reload(true)
