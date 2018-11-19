@@ -5,7 +5,7 @@ defmodule YourSanctuary.Email do
     new_email()
     |> to(to_email)
     |> from("email@yoursanctuary.com")
-    |> subject("Reset password instructions")
+    |> subject("Forgotten code")
     |> assign(:uuid, uuid)
     |> render(:reminder_email)
   end
