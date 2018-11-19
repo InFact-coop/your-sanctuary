@@ -39,7 +39,7 @@ const LogoImg = styled.img.attrs({
 `
 
 const Logo = () => (
-  <div className="flex justify-center justify-start-ns pt1 pt7-ns mt6-ns mv5 ml7-ns pl4-ns">
+  <div className="pointer flex justify-center justify-start-ns pt1 pt7-ns mt6-ns mv5 ml7-ns pl4-ns">
     <LogoImg />
   </div>
 )
@@ -76,7 +76,7 @@ const Modal = ({ modal }) => {
 
 class Layout extends Component {
   render() {
-    const { flash, children } = this.props
+    const { flash, children, history } = this.props
     return (
       <Fragment>
         {flash.modal && <Modal modal={flash.modal} />}
@@ -93,7 +93,9 @@ class Layout extends Component {
             {flash.error && (
               <FlashMessage messageColour="red">{flash.error}</FlashMessage>
             )}
-            <Logo />
+            <div onClick={() => history.push("/")}>
+              <Logo />
+            </div>
             <div className="mh2 mh7-ns ph4-ns">{children}</div>
             <Footer>
               <div className="ml7-ns flex justify-between">
