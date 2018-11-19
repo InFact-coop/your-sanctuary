@@ -4,11 +4,12 @@ import styled from "styled-components"
 
 import { FooterText } from "./Text"
 import EmailModal from "./modals/EmailModal"
-import { emailModal } from "./modals/modals"
+import { emailModal, reminderModal } from "./modals/modals"
 
 import { AdvisorDesktop } from "./Advisor"
 import lady from "../static/images/image_bg.png"
 import logo from "../static/images/logo_transparent.png"
+import ReminderModal from "./modals/ReminderModal"
 
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
@@ -66,6 +67,8 @@ const Modal = ({ modal }) => {
   switch (modal) {
     case emailModal:
       return <EmailModal />
+    case reminderModal:
+      return <ReminderModal />
     default:
       return <div />
   }
