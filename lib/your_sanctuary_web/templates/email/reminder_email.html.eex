@@ -1,1 +1,2 @@
-Here is your code yo - <%= @uuid %>
+Please see below for your code:
+<%= @uuid %>
