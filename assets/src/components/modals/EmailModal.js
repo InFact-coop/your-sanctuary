@@ -22,7 +22,7 @@ const EmailModal = ({ clearFlashMessages }) => (
         </span>{" "}
         and that when we send you your reminder email{" "}
         <span className="underline">
-          it will appear in your inbox as promotional code to win a prize.
+          it will appear as a simple unbranded message in your inbox.
         </span>
       </BodyText>
       <Button buttonColour="white" onClick={clearFlashMessages}>

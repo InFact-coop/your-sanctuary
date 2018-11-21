@@ -42,9 +42,9 @@ class ForgotCode extends Component {
           </div>
 
           <p className="mr3-ns mb4 font-6">
-            When we send you your reminder email it will appear in your inbox as
-            promotional code to win a prize. This is to avoid anyone else who
-            may have access to your inbox accessing your confidential chat.
+            Your reminder email will appear as a simple unbranded message in
+            your inbox. This is to avoid anyone else who may have access to
+            your inbox accessing your confidential chat.
           </p>
           <p className="mr3-ns font-7 mb4">
             *We will never use your email address other than to remind you of
