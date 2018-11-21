@@ -1,11 +1,15 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 import { Headline, Subline, BodyText } from "../components/Text"
-import { initScript, insertCrispScript } from "../utils/crisp"
+import {
+  initScript,
+  insertCrispScript,
+  reloadCrispSession,
+} from "../utils/crisp"
 
 class Chat extends Component {
-  
   signOut = () => {
+    reloadCrispSession()
     sessionStorage.removeItem("jwt")
     sessionStorage.removeItem("uuid")
     window.location.reload(true)
