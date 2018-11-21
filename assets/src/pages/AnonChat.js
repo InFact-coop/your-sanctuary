@@ -1,24 +1,26 @@
 import { Component } from "react"
-import { connect } from "react-redux"
 import { Headline, Subline, BodyText } from "../components/Text"
-import { initScript, insertCrispScript } from "../utils/crisp"
+import {
+  initScript,
+  reloadCrispSession,
+  insertCrispScript,
+} from "../utils/crisp"
 
-class Chat extends Component {
-  
-  signOut = () => {
-    sessionStorage.removeItem("jwt")
-    sessionStorage.removeItem("uuid")
-    window.location.reload(true)
+class AnonChat extends Component {
+  componentDidMount() {
+    window.addEventListener("beforeunload", reloadCrispSession)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", reloadCrispSession)
   }
 
   render() {
-    const uuid = sessionStorage.getItem("uuid")
-
     if (!window.$crisp) insertCrispScript()
 
     initScript()
 
-    if (!uuid || !window.$crisp) return <div />
+    if (!window.$crisp) return <div />
 
     return (
       <div>
@@ -29,9 +31,7 @@ class Chat extends Component {
           We offer sanctuary, support and empowerment to anyone affected by
           Domestic Abuse.
         </Subline>
-        <Subline className="mb4">
-          Your code is: <b>{uuid}</b>
-        </Subline>
+
         <BodyText className="mb4">
           Please note - during the chat you may be sent links to external
           websites for more information and advice. For your safety, we
@@ -46,17 +46,9 @@ class Chat extends Component {
             our website.
           </a>
         </BodyText>
-        <Subline
-          onClick={() => this.signOut()}
-          className="mb4 underline mb7-ns pointer"
-        >
-          Log out here
-        </Subline>
       </div>
     )
   }
 }
 
-export default connect(({ auth }) => ({
-  auth,
-}))(Chat)
+export default AnonChat
