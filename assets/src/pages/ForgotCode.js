@@ -37,6 +37,7 @@ class ForgotCode extends Component {
               type="email"
               placeholder="Your email"
               className="mb4 mb0-ns mr3-ns"
+              required
             />
             <SubmitButton type="submit" />
           </div>

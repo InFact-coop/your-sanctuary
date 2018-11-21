@@ -43,6 +43,7 @@ class Login extends Component {
                 type="text"
                 placeholder="Your code"
                 className="mb4 mb0-ns mr3-ns"
+                required
               />
               <Link
                 to="/forgot-code"
