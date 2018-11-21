@@ -75,8 +75,16 @@ const Modal = ({ modal }) => {
 }
 
 class Layout extends Component {
+  logoRedirect = () => {
+    const { history } = this.props
+    if (history.location.pathname === "/anonymous-chat") {
+      window.$crisp.push(["do", "session:reset", [false]])
+      return history.push("/")
+    }
+    history.push("/")
+  }
   render() {
-    const { flash, children, history } = this.props
+    const { flash, children } = this.props
     return (
       <Fragment>
         {flash.modal && <Modal modal={flash.modal} />}
@@ -93,7 +101,7 @@ class Layout extends Component {
             {flash.error && (
               <FlashMessage messageColour="red">{flash.error}</FlashMessage>
             )}
-            <div onClick={() => history.push("/")}>
+            <div onClick={this.logoRedirect}>
               <Logo />
             </div>
             <div className="mh2 mh7-ns ph4-ns">{children}</div>

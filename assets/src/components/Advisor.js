@@ -2,6 +2,7 @@ import { Component } from "react"
 import styled from "styled-components"
 import advisorGreen from "../static/icons/Advisor_green.svg"
 import advisorRed from "../static/icons/Advisor_red.svg"
+import { checkIfInHours } from "../utils/hours"
 
 const AdvisorImage = styled.div.attrs({
   className: "bg-white w3 h3",
@@ -27,26 +28,6 @@ const Advisor = ({ available }) => (
   </div>
 )
 
-class AdvisorDesktop extends Component {
-  checkIfInHours = () => {
-    const today = new Date()
-    const day = today.getUTCDay()
-    const hour = today.getUTCHours()
-
-    if (day < 1 || day > 5) {
-      return false
-    }
-
-    if (hour < 10 || hour > 13) {
-      return false
-    }
-
-    return true
-  }
-
-  render() {
-    return <Advisor available={this.checkIfInHours()} />
-  }
-}
+const AdvisorDesktop = () => <Advisor available={checkIfInHours()} />
 
 export { AdvisorDesktop }

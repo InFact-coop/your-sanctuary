@@ -4,6 +4,7 @@ import { hot } from "react-hot-loader"
 
 import {
   Home,
+  AnonChat,
   Chat,
   SignUp1,
   SignUp2,
@@ -35,6 +36,8 @@ const App = () => (
         <Switch>
           <LayoutRoute path="/" exact component={IfSignedIn(Home)} />
           <LayoutRoute path="/chat" exact component={RequireAuth(Chat)} />
+          <LayoutRoute path="/anonymous-chat" exact component={AnonChat} />
+
           <LayoutRoute path="/signup-1" exact component={IfSignedIn(SignUp1)} />
           <LayoutRoute path="/signup-2" exact component={IfSignedIn(SignUp2)} />
           <LayoutRoute path="/signup-3" exact component={IfSignedIn(SignUp3)} />
