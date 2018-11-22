@@ -6,6 +6,7 @@ import {
   insertCrispScript,
   reloadCrispSession,
 } from "../utils/crisp"
+import { AdvisorMobile } from "../components/Advisor"
 
 class Chat extends Component {
   signOut = () => {
@@ -50,6 +51,7 @@ class Chat extends Component {
             our website.
           </a>
         </BodyText>
+        <AdvisorMobile />
         <Subline
           onClick={() => this.signOut()}
           className="mb4 underline mb7-ns pointer"

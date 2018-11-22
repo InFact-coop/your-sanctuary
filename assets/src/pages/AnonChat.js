@@ -5,6 +5,7 @@ import {
   reloadCrispSession,
   insertCrispScript,
 } from "../utils/crisp"
+import { AdvisorMobile } from "../components/Advisor"
 
 class AnonChat extends Component {
   componentDidMount() {
@@ -46,6 +47,7 @@ class AnonChat extends Component {
             our website.
           </a>
         </BodyText>
+        <AdvisorMobile />
       </div>
     )
   }

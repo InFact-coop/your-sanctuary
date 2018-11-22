@@ -45,11 +45,13 @@ class SignUp3 extends Component {
               type="email"
               placeholder="Your email"
               className="mb4"
+              required
             />
             <Input
               onChange={this.onEmailConfirmationChange}
               type="email"
               placeholder="Confirm your email"
+              required
             />
           </div>
 

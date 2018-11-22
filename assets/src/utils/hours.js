@@ -7,7 +7,7 @@ const checkIfInHours = () => {
     return false
   }
 
-  if (hour < 10 || hour > 14) {
+  if (hour < 10 || hour > 13) {
     return false
   }
 
