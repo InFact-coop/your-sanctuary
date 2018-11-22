@@ -43,6 +43,6 @@ Tips when editing the chatbot:
 
 In the list of plugins, there is also one called 'Customization'. In here, you can change the texts that are displayed on the chat box, for example 'Questions? Chat with us!' or 'Compose your message...' in the below picture:
 
-<img src="./instructions_assets/chatbox.png" width="200" style="float: left;">
+<img src="./instructions_assets/chatbox.png" height="350" style="display: inline-block;">
 
-<img src="./instructions_assets/edit_chatbox_texts.png" width="500" style="float: right;">
+<img src="./instructions_assets/edit_chatbox_texts.png" height="350" style="display: inline-block;">
