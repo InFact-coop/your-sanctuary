@@ -8,6 +8,8 @@ import { BodyText } from "../components/Text"
 import { RoundButton } from "../components/Button"
 import { Input } from "../components/Form"
 
+import arrowRight from "../static/icons/arrow_right.svg"
+
 const SubmitButton = RoundButton.withComponent("button")
 
 class SignUp3 extends Component {
@@ -57,7 +59,7 @@ class SignUp3 extends Component {
 
           <div className="flex justify-center items-center justify-end-ns mb4">
             <BodyText className="ttu mr3 b">Next</BodyText>
-            <SubmitButton type="submit" />
+            <SubmitButton type="submit" image={arrowRight} />
           </div>
         </form>
       </section>

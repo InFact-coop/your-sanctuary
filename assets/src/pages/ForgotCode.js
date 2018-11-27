@@ -7,6 +7,8 @@ import { BodyText } from "../components/Text"
 import { RoundButton } from "../components/Button"
 import { Input } from "../components/Form"
 
+import arrowRight from "../static/icons/arrow_right.svg"
+
 const SubmitButton = RoundButton.withComponent("button")
 
 class ForgotCode extends Component {
@@ -39,13 +41,13 @@ class ForgotCode extends Component {
               className="mb4 mb0-ns mr3-ns"
               required
             />
-            <SubmitButton type="submit" />
+            <SubmitButton type="submit" image={arrowRight} />
           </div>
 
           <p className="mr3-ns mb4 font-6">
             Your reminder email will appear as a simple unbranded message in
-            your inbox. This is to avoid anyone else who may have access to
-            your inbox accessing your confidential chat.
+            your inbox. This is to avoid anyone else who may have access to your
+            inbox accessing your confidential chat.
           </p>
           <p className="mr3-ns font-7 mb4">
             *We will never use your email address other than to remind you of

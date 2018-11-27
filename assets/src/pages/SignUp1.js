@@ -1,5 +1,6 @@
 import { Headline, BodyText } from "../components/Text"
 import { RoundButton } from "../components/Button"
+import arrowRight from "../static/icons/arrow_right.svg"
 
 const SignUp1 = ({ history }) => (
   <section>
@@ -29,7 +30,10 @@ const SignUp1 = ({ history }) => (
     </BodyText>
     <div className="flex justify-center items-center justify-end-ns mb4">
       <BodyText className="ttu mr3 b">Next</BodyText>
-      <RoundButton onClick={() => history.push("/signup-2")} />
+      <RoundButton
+        onClick={() => history.push("/signup-2")}
+        image={arrowRight}
+      />
     </div>
   </section>
 )

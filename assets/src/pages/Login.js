@@ -9,6 +9,8 @@ import { BodyText, Headline } from "../components/Text"
 import { RoundButton } from "../components/Button"
 import { Input } from "../components/Form"
 
+import arrowRight from "../static/icons/arrow_right.svg"
+
 const SubmitButton = RoundButton.withComponent("button")
 
 class Login extends Component {
@@ -52,7 +54,7 @@ class Login extends Component {
                 I forgot my code
               </Link>
             </div>
-            <SubmitButton type="submit" />
+            <SubmitButton type="submit" image={arrowRight} />
           </div>
         </form>
       </section>
