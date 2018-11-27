@@ -12,7 +12,7 @@ import { RoundButton } from "./Button"
 import lady from "../static/images/image_bg.png"
 import logo from "../static/images/logo_transparent.png"
 import ReminderModal from "./modals/ReminderModal"
-import exit from "../static/icons/arrow_right.svg"
+import exit from "../static/icons/exit.svg"
 
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
