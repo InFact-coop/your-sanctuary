@@ -30,7 +30,7 @@ class Login extends Component {
   render() {
     return (
       <section>
-        <Headline className="mb2">Nice to see you again!</Headline>
+        <Headline className="mb2">Welcome back</Headline>
 
         <BodyText className="mb7">
           If you have spoken to us before please enter your code below
