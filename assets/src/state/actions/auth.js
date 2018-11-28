@@ -52,8 +52,9 @@ export const signIn = ({ code }, callback) => async dispatch => {
 
 export const requestCodeReminder = ({ email }) => async dispatch => {
   try {
-    await axios.post("/api/code-reminder/", { email })
-    dispatch(setModal(reminderModal))
+    const res = await axios.post("/api/code-reminder/", { email })
+
+    if (res.status === 200) dispatch(setModal(reminderModal))
   } catch (e) {
     if (e.response && e.response.data && e.response.data.error) {
       return dispatch(setErrorFlash(e.response.data.error))
