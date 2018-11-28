@@ -9,13 +9,6 @@ import {
 import { AdvisorMobile } from "../components/Advisor"
 
 class Chat extends Component {
-  signOut = () => {
-    reloadCrispSession()
-    sessionStorage.removeItem("jwt")
-    sessionStorage.removeItem("uuid")
-    window.location.reload(true)
-  }
-
   render() {
     const uuid = sessionStorage.getItem("uuid")
 

@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import arrowRight from "../static/icons/arrow_right.svg"
 
 const Button = styled.div.attrs({
   className: ({ buttonColour }) =>
@@ -12,7 +11,7 @@ const RoundButton = styled.div.attrs({
   width: 45px;
   height: 45px;
   border-radius: 50%;
-  background-image: url(${arrowRight});
+  background-image: ${({ image }) => `url(${image})`};
   background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;

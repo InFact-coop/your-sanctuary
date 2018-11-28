@@ -1,5 +1,6 @@
 import { Headline, BodyText } from "../components/Text"
 import { RoundButton } from "../components/Button"
+import arrowRight from "../static/icons/arrow_right.svg"
 
 const SignUp1 = ({ history }) => (
   <section>
@@ -21,7 +22,7 @@ const SignUp1 = ({ history }) => (
     <BodyText className="mb4">
       Please note - if you are under 16 we will not be able to chat with you
       using this service. Please visit&nbsp;
-      <a href="www.thehideout.org.uk" target="_blank" className="blue b">
+      <a href="http://www.thehideout.org.uk" target="_blank" className="blue b">
         The Hideout&nbsp;
       </a>
       for more information. By clicking ‘Next’ you are confirming you are over
@@ -29,7 +30,10 @@ const SignUp1 = ({ history }) => (
     </BodyText>
     <div className="flex justify-center items-center justify-end-ns mb4">
       <BodyText className="ttu mr3 b">Next</BodyText>
-      <RoundButton onClick={() => history.push("/signup-2")} />
+      <RoundButton
+        onClick={() => history.push("/signup-2")}
+        image={arrowRight}
+      />
     </div>
   </section>
 )

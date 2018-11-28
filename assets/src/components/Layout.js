@@ -1,15 +1,20 @@
 import { Component, Fragment } from "react"
 import { connect } from "react-redux"
+
 import styled from "styled-components"
 
-import { FooterText } from "./Text"
+import { FooterText, SubButtonText } from "./Text"
 import EmailModal from "./modals/EmailModal"
 import { emailModal, reminderModal } from "./modals/modals"
 
 import { AdvisorDesktop } from "./Advisor"
+import { RoundButton } from "./Button"
 import lady from "../static/images/image_bg.png"
 import logo from "../static/images/logo_transparent.png"
 import ReminderModal from "./modals/ReminderModal"
+import exit from "../static/icons/exit.svg"
+
+import { reloadCrispSession } from "../utils/crisp"
 
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
@@ -31,6 +36,23 @@ const MainContent = styled.div.attrs({
   min-height: 100vh;
   overflow: scroll;
 `
+
+const ExitContainer = styled.div.attrs({
+  className:
+    "absolute ph3-ns ph2 pt3-ns pt2 br3 flex flex-column items-center bg-near-white",
+})`
+  right: ${({ right }) => right};
+  top: 0;
+`
+
+const ExitButton = ({ onClick, display, right }) => (
+  <div className={`${display} blue`} onClick={onClick}>
+    <ExitContainer right={right}>
+      <RoundButton className="mb1" image={exit} />
+      <SubButtonText>Exit site</SubButtonText>
+    </ExitContainer>
+  </div>
+)
 
 const LogoImg = styled.img.attrs({
   src: logo,
@@ -75,6 +97,13 @@ const Modal = ({ modal }) => {
 }
 
 class Layout extends Component {
+  signOut = () => {
+    if (window.$crisp) reloadCrispSession()
+    if (sessionStorage.getItem("jwt")) sessionStorage.removeItem("jwt")
+    if (sessionStorage.getItem("uuid")) sessionStorage.removeItem("uuid")
+    window.location.href = "https://bbc.co.uk"
+  }
+
   logoRedirect = () => {
     const { history } = this.props
     if (history.location.pathname === "/anonymous-chat") {
@@ -101,6 +130,12 @@ class Layout extends Component {
             {flash.error && (
               <FlashMessage messageColour="red">{flash.error}</FlashMessage>
             )}
+            <ExitButton
+              onClick={this.signOut}
+              display="dn db-ns"
+              right="50vw"
+            />
+            <ExitButton onClick={this.signOut} display="db dn-ns" right="0" />
             <div onClick={this.logoRedirect}>
               <Logo />
             </div>
