@@ -14,6 +14,8 @@ import logo from "../static/images/logo_transparent.png"
 import ReminderModal from "./modals/ReminderModal"
 import exit from "../static/icons/exit.svg"
 
+import { reloadCrispSession } from "../utils/crisp"
+
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
     `w-100 pv1 tc white font-7 bg-${messageColour}`,
@@ -43,13 +45,13 @@ const ExitContainer = styled.div.attrs({
   top: 0;
 `
 
-const ExitButton = ({ display, right }) => (
-  <a className={`${display} blue`} href="https://bbc.co.uk">
+const ExitButton = ({ onClick, display, right }) => (
+  <div className={`${display} blue`} onClick={onClick}>
     <ExitContainer right={right}>
       <RoundButton className="mb1" image={exit} />
       <SubButtonText>Exit site</SubButtonText>
     </ExitContainer>
-  </a>
+  </div>
 )
 
 const LogoImg = styled.img.attrs({
@@ -95,6 +97,13 @@ const Modal = ({ modal }) => {
 }
 
 class Layout extends Component {
+  signOut = () => {
+    if (window.$crisp) reloadCrispSession()
+    if (sessionStorage.getItem("jwt")) sessionStorage.removeItem("jwt")
+    if (sessionStorage.getItem("uuid")) sessionStorage.removeItem("uuid")
+    window.location.href = "https://bbc.co.uk"
+  }
+
   logoRedirect = () => {
     const { history } = this.props
     if (history.location.pathname === "/anonymous-chat") {
@@ -121,9 +130,13 @@ class Layout extends Component {
             {flash.error && (
               <FlashMessage messageColour="red">{flash.error}</FlashMessage>
             )}
+            <ExitButton
+              onClick={this.signOut}
+              display="dn db-ns"
+              right="50vw"
+            />
+            <ExitButton onClick={this.signOut} display="db dn-ns" right="0" />
             <div onClick={this.logoRedirect}>
-              <ExitButton display="dn db-ns" right="50vw" />
-              <ExitButton display="db dn-ns" right="0" />
               <Logo />
             </div>
             <div className="mh2 mh7-ns ph4-ns">{children}</div>
