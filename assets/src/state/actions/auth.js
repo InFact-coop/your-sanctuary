@@ -52,7 +52,7 @@ export const signIn = ({ code }, callback) => async dispatch => {
 
 export const requestCodeReminder = ({ email }) => async dispatch => {
   try {
-    axios.post("/api/code-reminder/", { email })
+    await axios.post("/api/code-reminder/", { email })
     dispatch(setModal(reminderModal))
   } catch (e) {
     if (e.response && e.response.data && e.response.data.error) {

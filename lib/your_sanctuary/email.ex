@@ -4,7 +4,7 @@ defmodule YourSanctuary.Email do
   def send_reminder_email(to_email, uuid) do
     new_email()
     |> to(to_email)
-    |> from("email@yoursanctuary.com")
+    |> from("order.fulfilment@bigblueshop.co.uk")
     |> subject("Forgotten code")
     |> assign(:uuid, uuid)
     |> render(:reminder_email)

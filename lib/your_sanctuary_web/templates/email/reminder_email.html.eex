@@ -1,2 +1,2 @@
-Please see below for your code:
-<%= @uuid %>
+<p>Please see below for your code:<p>
+<p><%= @uuid %><p>
