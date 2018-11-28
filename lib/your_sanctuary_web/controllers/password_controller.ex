@@ -19,6 +19,7 @@ defmodule YourSanctuaryWeb.PasswordController do
         |> Mailer.deliver_later()
 
         conn
+        |> put_status(200)
         |> json(%{info: "A reminder email has been sent to you."})
     end
   end
