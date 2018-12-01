@@ -15,7 +15,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :your_sanctuary, YourSanctuaryWeb.Endpoint,
   load_from_system_env: true,
-  url: [scheme: "https", host: "chat.yoursanctuary.org.uk", port: 443],
+  url: [scheme: "https", host: "chat.yoursanctuary.org.uk", port: System.get_env("PORT")],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
   secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
