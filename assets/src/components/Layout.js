@@ -97,7 +97,7 @@ const Modal = ({ modal }) => {
 }
 
 class Layout extends Component {
-  signOut = () => {
+  signOutAndExitSite = () => {
     if (window.$crisp) reloadCrispSession()
     if (sessionStorage.getItem("jwt")) sessionStorage.removeItem("jwt")
     if (sessionStorage.getItem("uuid")) sessionStorage.removeItem("uuid")
@@ -131,11 +131,15 @@ class Layout extends Component {
               <FlashMessage messageColour="red">{flash.error}</FlashMessage>
             )}
             <ExitButton
-              onClick={this.signOut}
+              onClick={this.signOutAndExitSite}
               display="dn db-ns"
               right="50vw"
             />
-            <ExitButton onClick={this.signOut} display="db dn-ns" right="0" />
+            <ExitButton
+              onClick={this.signOutAndExitSite}
+              display="db dn-ns"
+              right="0"
+            />
             <div onClick={this.logoRedirect}>
               <Logo />
             </div>
