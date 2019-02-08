@@ -9,11 +9,16 @@ import {
 import { AdvisorMobile } from "../components/Advisor"
 
 class Chat extends Component {
+  signOut = () => {
+    if (window.$crisp) reloadCrispSession()
+    if (sessionStorage.getItem("jwt")) sessionStorage.removeItem("jwt")
+    if (sessionStorage.getItem("uuid")) sessionStorage.removeItem("uuid")
+    window.location.reload()
+  }
+
   render() {
     const uuid = sessionStorage.getItem("uuid")
-
     if (!window.$crisp) insertCrispScript()
-
     initScript()
 
     if (!uuid || !window.$crisp) return <div />
