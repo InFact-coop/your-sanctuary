@@ -1,4 +1,6 @@
 import { Component } from "react"
+import { connect } from "react-redux"
+
 import { Headline, Subline, BodyText } from "../components/Text"
 import {
   initScript,
@@ -22,6 +24,8 @@ class AnonChat extends Component {
     initScript()
 
     if (!window.$crisp) return <div />
+
+    const { crisp_online } = this.props
 
     return (
       <div>
@@ -47,10 +51,12 @@ class AnonChat extends Component {
             our website.
           </a>
         </BodyText>
-        <AdvisorMobile />
+        <AdvisorMobile available={crisp_online} />
       </div>
     )
   }
 }
 
-export default AnonChat
+export default connect(({ crisp: { crisp_online } }) => ({
+  crisp_online,
+}))(AnonChat)
