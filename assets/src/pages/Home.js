@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import { Component } from "react"
+import { connect } from "react-redux"
 
 import { Subline, SubButtonText, BodyText } from "../components/Text"
 import { Button } from "../components/Button"
-import { checkIfInHours } from "../utils/hours"
 import { AdvisorMobile } from "../components/Advisor"
 
 const HomeHeadline = styled.p.attrs({
@@ -22,7 +22,7 @@ const ButtonCreator = ({ inHours, history }) =>
           Chat to us
         </Button>
         <SubButtonText className="mr2-ns">
-          To start talking straight away click here to recieve your unique code
+          To start talking straight away click here to receive your unique code
         </SubButtonText>
       </div>
       <div className="flex flex-column mb4 mb0-ns w-70 center tc w-50-ns ml1-ns">
@@ -41,8 +41,7 @@ const ButtonCreator = ({ inHours, history }) =>
   ) : (
     <div>
       <BodyText>
-        Unfortunately our live chat service is not available at the moment. This
-        service is available <b>Monday to Friday 10am-2pm.</b>
+        Unfortunately our live chat service is not available at the moment.
       </BodyText>
       <div className="flex flex-column mb4 tc w-100 w-50-ns h-100">
         <Button
@@ -56,24 +55,24 @@ const ButtonCreator = ({ inHours, history }) =>
           Please click here to find out more about Refuge, Housing and Legal
           Advice.
         </SubButtonText>
-        <AdvisorMobile />
+        <AdvisorMobile available={inHours} />
       </div>
     </div>
   )
 
 class Home extends Component {
   render() {
-    const { history, initAnonymousChat } = this.props
+    const { history, initAnonymousChat, crisp } = this.props
 
     return (
       <section>
         <HomeHeadline className="mb2"> Confidential </HomeHeadline>
-        <Subline className={checkIfInHours() ? "mb4 mb7-ns" : "mb4 mb1-ns"}>
+        <Subline className={crisp.crisp_online ? "mb4 mb7-ns" : "mb4 mb1-ns"}>
           Free confidential chat offering you support when you need it.
         </Subline>
 
         <ButtonCreator
-          inHours={checkIfInHours()}
+          inHours={crisp.crisp_online}
           history={history}
           initAnonymousChat={initAnonymousChat}
         />
@@ -81,4 +80,7 @@ class Home extends Component {
     )
   }
 }
-export default Home
+
+export default connect(({ crisp }) => ({
+  crisp,
+}))(Home)

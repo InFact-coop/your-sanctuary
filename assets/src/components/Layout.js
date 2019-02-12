@@ -15,6 +15,7 @@ import ReminderModal from "./modals/ReminderModal"
 import exit from "../static/icons/exit.svg"
 
 import { reloadCrispSession } from "../utils/crisp"
+import { checkCrispOnlineStatus } from "../state/actions/crisp"
 
 const FlashMessage = styled.p.attrs({
   className: ({ messageColour }) =>
@@ -97,6 +98,14 @@ const Modal = ({ modal }) => {
 }
 
 class Layout extends Component {
+  componentDidMount() {
+    this.props.checkCrispOnlineStatus()
+  }
+
+  componentDidUpdate() {
+    this.props.checkCrispOnlineStatus()
+  }
+
   signOutAndExitSite = () => {
     if (window.$crisp) reloadCrispSession()
     if (sessionStorage.getItem("jwt")) sessionStorage.removeItem("jwt")
@@ -113,7 +122,8 @@ class Layout extends Component {
     history.push("/")
   }
   render() {
-    const { flash, children } = this.props
+    const { flash, children, crisp_online } = this.props
+
     return (
       <Fragment>
         {flash.modal && <Modal modal={flash.modal} />}
@@ -145,19 +155,18 @@ class Layout extends Component {
             </div>
             <div className="mh2 mh7-ns ph4-ns">{children}</div>
             <Footer>
-              <div className="ml7-ns flex justify-between">
+              <div className="ml7-ns flex-ns justify-between-ns">
                 <FooterText>
-                  This service is available <b>Monday-Friday 10am-2pm</b>
+                  <a
+                    href="../static/your-sanctuary-privacy-policy.pdf"
+                    download
+                    className="white font-7 font-6-ns"
+                  >
+                    Privacy Policy
+                  </a>
                 </FooterText>
-                <AdvisorDesktop />
+                <AdvisorDesktop available={crisp_online} />
               </div>
-              <a
-                href="../static/your-sanctuary-privacy-policy.pdf"
-                download
-                className="mh7-ns white font-7 font-6-ns"
-              >
-                Privacy Policy
-              </a>
             </Footer>
           </MainContent>
           <MainImageWeb>
@@ -169,6 +178,10 @@ class Layout extends Component {
   }
 }
 
-export default connect(({ flash }) => ({
-  flash,
-}))(Layout)
+export default connect(
+  ({ flash, crisp: { crisp_online } }) => ({
+    flash,
+    crisp_online,
+  }),
+  { checkCrispOnlineStatus }
+)(Layout)

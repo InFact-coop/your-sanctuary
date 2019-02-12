@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import advisorGreen from "../static/icons/Advisor_green.svg"
 import advisorRed from "../static/icons/Advisor_red.svg"
-import { checkIfInHours } from "../utils/hours"
 
 const AdvisorImage = styled.div.attrs({
   className: ({ shadow }) =>
@@ -29,15 +28,15 @@ const Advisor = ({ available, shadow }) => (
   </div>
 )
 
-const AdvisorDesktop = () => (
+const AdvisorDesktop = ({ available }) => (
   <div className="h-100 dn db-ns">
-    <Advisor available={checkIfInHours()} shadow={false} />
+    <Advisor available={available} shadow={false} />
   </div>
 )
 
-const AdvisorMobile = () => (
+const AdvisorMobile = ({ available }) => (
   <div className="db dn-ns">
-    <Advisor available={checkIfInHours()} shadow={true} />
+    <Advisor available={available} shadow={true} />
   </div>
 )
 

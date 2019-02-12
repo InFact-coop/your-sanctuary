@@ -25,6 +25,7 @@ defmodule YourSanctuaryWeb.Router do
     post "/sign-up", UserController, :sign_up
     post "/sign-in", UserController, :sign_in
     post "/code-reminder", PasswordController, :code_reminder
+    get "/crisp-online", CrispController, :crisp_online
   end
 
   scope "/", YourSanctuaryWeb do

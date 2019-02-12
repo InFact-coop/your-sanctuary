@@ -17,6 +17,7 @@ class Chat extends Component {
   }
 
   render() {
+    const { crisp_online } = this.props
     const uuid = sessionStorage.getItem("uuid")
     if (!window.$crisp) insertCrispScript()
     initScript()
@@ -49,7 +50,7 @@ class Chat extends Component {
             our website.
           </a>
         </BodyText>
-        <AdvisorMobile />
+        <AdvisorMobile available={crisp_online} />
         <Subline
           onClick={() => this.signOut()}
           className="mb4 underline mb7-ns pointer"
@@ -61,6 +62,7 @@ class Chat extends Component {
   }
 }
 
-export default connect(({ auth }) => ({
+export default connect(({ auth, crisp: { crisp_online } }) => ({
   auth,
+  crisp_online,
 }))(Chat)
