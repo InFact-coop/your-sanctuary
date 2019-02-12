@@ -6,3 +6,5 @@ export const SET_ERROR_FLASH = "set_error_flash"
 export const SET_INFO_FLASH = "set_info_flash"
 export const SET_WARNING_FLASH = "set_warning_flash"
 export const SET_MODAL = "set_modal"
+
+export const CRISP_ONLINE = "crisp_online"
