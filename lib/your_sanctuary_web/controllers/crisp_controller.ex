@@ -17,8 +17,6 @@ defmodule YourSanctuaryWeb.CrispController do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         res = Poison.decode!(body)
 
-        IO.inspect(res["data"], label: "wooo")
-
         conn
         |> put_status(200)
         |> json(res)
