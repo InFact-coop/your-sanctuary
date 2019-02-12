@@ -14,7 +14,6 @@ export const checkCrispOnlineStatus = () => async dispatch => {
       },
     } = await axios.get("/api/crisp-online")
 
-    console.log("state", status)
     dispatch(crisp_online(status))
   } catch (e) {
     // eslint-disable-next-line
