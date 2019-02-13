@@ -6,12 +6,12 @@ defmodule YourSanctuaryWeb.CrispController do
   def crisp_online(conn, %{}) do
     crisp_identifier = System.get_env("CRISP_IDENTIFIER")
     crisp_key = System.get_env("CRISP_KEY")
+    crisp_auth = Base.encode64("#{crisp_identifier}:#{crisp_key}")
 
     case HTTPoison.get(
            "https://api.crisp.chat/v1/website/eb431f6c-af5b-4a5b-8822-b71066070599/availability/status",
            [
-             {"Authorization",
-              "Basic ODlhMDNlYjQtY2I1Yy00YWMyLTk1OTAtNTg2MjYwNDQ4YjM1Ojg4ZThiMzYwM2RmYmY3ZGJkZDk5MTAyMDMxYzE0ZWU1OTMwYTc3YTM3ZThkMzE4NmMxZGUxN2IxNTQyYjAzMjQ="}
+             {"Authorization", "Basic #{crisp_auth}"}
            ]
          ) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
